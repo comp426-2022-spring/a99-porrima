@@ -1,0 +1,25 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Porrima Backend",
+  "main": "server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattsg6/a99-porrima.git"
+  },
+  "author": "Matthew Gilmore",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/mattsg6/a99-porrima/issues"
+  },
+  "homepage": "https://github.com/mattsg6/a99-porrima#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}

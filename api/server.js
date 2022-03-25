@@ -18,7 +18,7 @@ const md5 = require('md5')
 // We can use minimist in the future if that's easier; this is just for testing and default
 const port = 3000
 
-app.listen(port, () => {
+let appServer = app.listen(port, () => {
     console.log(`Server is runnning on port: ${port}`)
 })
 
@@ -142,11 +142,17 @@ app.delete("/app/delete/user/:username", (req, res) => {
     }
 });
 
+function stop() {
+    appServer.close();
+  };
+
 // Nonexistent API handling
 app.use(function(req, res){
     res.status(404).json({"message":'404 NOT FOUND'})
 })
 
+module.exports = app
+module.exports.stop = stop
 
 // FOR TESTING
 // curl --data "email=thegilmores.matt@gmail.com&username=mattsg&password=abc123" http://localhost:3000/app/new/user

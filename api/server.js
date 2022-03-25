@@ -93,22 +93,65 @@ app.get('/app/user/exists', (req, res) => {
 })
 
 // API endpoint for user signing in
-app.get('/app/user/signin', (req, res) => {
-    let sign_in = false
+app.get('/app/user/signin/:username/:password', (req, res) => {
     try {
-        const stmt = user_db.prepare('SELECT * FROM user WHERE username = ?')
-        const info = stmt.run(req.body.username)
-        if(String(info.password) == String(md5(req.body.password + info.salt))) {
+        let sign_in = false
+        let user_data = {
+            user: req.params.username,
+            pass: req.params.password
+        }
+        const stmt = user_db.prepare('SELECT * FROM user WHERE username = ?').get(user_data.user)
+        if(stmt.password == String(md5(user_data.pass + stmt.salt))) {
             sign_in = true
         } 
-        res.status(200).json({"signed_in": "true"})
+        res.status(200).json({"signed_in": sign_in})
     } catch (e) {
         console.error(e)
     }
 })
+
+// API endpoint for updating username, email or password
+app.patch("/app/update/user/:username", (req, res) => {
+    try {
+        if(req.body.password === undefined) {
+            let salt = null
+            let password = null
+        }
+        else {
+            let salt = md5(Math.random())
+            let password = md5(req.body.password + String(salt))
+        }
+        let user_info = {
+            user: req.body.username,
+            pass: password,
+            email: req.body.email,
+            salt: salt
+        }
+        const stmt = user_db.prepare('UPDATE user SET username = COALESCE(?,username),password = COALESCE(?,password), email = COALESCE(?,email), salt = COALESCE(?, salt) WHERE username = ?')
+        const info = stmt.run(user_info.user, user_info.pass, user_info.email, user_info.salt, req.params.user)
+        res.status(200).json(info)
+    } catch (e) {
+        console.error(e)
+    }
+})
+
+// API endpoint for deleting user
+app.delete("/app/delete/user/:username", (req, res) => {
+    try {
+        const stmt = db.prepare('DELETE FROM userinfo WHERE username = ?')
+        const info = stmt.run(req.params.username)
+        res.status(200).json(info)
+    } catch (e) {
+        console.error(e)
+    }
+});
 
 // Nonexistent API handling
 app.use(function(req, res){
     res.status(404).send('404 NOT FOUND')
     res.type("text/plain")
 })
+
+
+// FOR TESTING
+// curl --data "email=thegilmores.matt@gmail.com&username=mattsg&password=abc123" http://localhost:3000/app/new/user

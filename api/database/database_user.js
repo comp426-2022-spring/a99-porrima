@@ -14,9 +14,8 @@ if(row === undefined) {
     // More documentation is available at the API endpoint for this
     const sqlInit = `
         CREATE TABLE user ( 
-            id INTEGER PRIMARY KEY,
+            username TEXT PRIMARY KEY,
             email TEXT,
-            username TEXT,
             password TEXT,
             salt TEXT);
         `;

@@ -3,8 +3,8 @@ const express = require('express')
 const app = express()
 
 // Make Express use its own built-in body parser for both urlencoded and JSON body data.
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(express.urlencoded({ extended: true}));
+app.use(express.json())
 
 // Requiring both databases //
 // Log database
@@ -23,12 +23,10 @@ app.listen(port, () => {
 })
 
 // Base API endpoint
-app.get('/app', (req, res) => {
-    res.statusCode = 200
-    res.statusMessage = 'OK';
-    res.writeHead( res.statusCode, { 'Content-Type' : 'text/plain' });
-    res.end(res.statusCode+ ' ' +res.statusMessage)
-})
+app.get("/app/", (req, res) => {
+    res.json({"message":"API works! (200)"});
+	res.status(200);
+});
 
 // Middleware for querying to access log database
 app.use((req, res, next) => {
@@ -113,22 +111,20 @@ app.get('/app/user/signin/:username/:password', (req, res) => {
 // API endpoint for updating username, email or password
 app.patch("/app/update/user/:username", (req, res) => {
     try {
-        if(req.body.password === undefined) {
-            let salt = null
-            let password = null
-        }
-        else {
-            let salt = md5(Math.random())
-            let password = md5(req.body.password + String(salt))
+        let salt = null;
+        if(!(req.body.password === undefined)) {
+            salt = md5(Math.random())
         }
         let user_info = {
             user: req.body.username,
-            pass: password,
+            pass: md5(req.body.password + String(salt)),
             email: req.body.email,
             salt: salt
         }
-        const stmt = user_db.prepare('UPDATE user SET username = COALESCE(?,username),password = COALESCE(?,password), email = COALESCE(?,email), salt = COALESCE(?, salt) WHERE username = ?')
-        const info = stmt.run(user_info.user, user_info.pass, user_info.email, user_info.salt, req.params.user)
+        const stmt = user_db.prepare(`UPDATE user SET username = COALESCE(?,username),
+            email = COALESCE(?,email),password = COALESCE(?,password),  
+            salt = COALESCE(?, salt) WHERE username = ?`)
+        const info = stmt.run(user_info.user, user_info.email, user_info.pass, user_info.salt, req.params.username)
         res.status(200).json(info)
     } catch (e) {
         console.error(e)
@@ -138,7 +134,7 @@ app.patch("/app/update/user/:username", (req, res) => {
 // API endpoint for deleting user
 app.delete("/app/delete/user/:username", (req, res) => {
     try {
-        const stmt = db.prepare('DELETE FROM userinfo WHERE username = ?')
+        const stmt = user_db.prepare('DELETE FROM user WHERE username = ?')
         const info = stmt.run(req.params.username)
         res.status(200).json(info)
     } catch (e) {
@@ -148,10 +144,11 @@ app.delete("/app/delete/user/:username", (req, res) => {
 
 // Nonexistent API handling
 app.use(function(req, res){
-    res.status(404).send('404 NOT FOUND')
-    res.type("text/plain")
+    res.status(404).json({"message":'404 NOT FOUND'})
 })
 
 
 // FOR TESTING
 // curl --data "email=thegilmores.matt@gmail.com&username=mattsg&password=abc123" http://localhost:3000/app/new/user
+// curl -X DELETE "localhost:3000/app/delete/user/iamfake"
+// curl -X PATCH http://localhost:3000/app/update/user/mattsg -H "Content-Type: application/json" -d '{"username":"matthew","password":"abc123","email":"mgilmore@katchdata.com"}'

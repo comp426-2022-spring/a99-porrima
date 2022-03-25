@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "node server.js"
+    "test": ""
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,9 @@
   },
   "homepage": "https://github.com/mattsg6/a99-porrima#readme",
   "dependencies": {
-    "express": "^4.17.3"
+    "better-sqlite3": "^7.5.0",
+    "express": "^4.17.3",
+    "md5": "^2.3.0",
+    "nodemon": "^2.0.15"
   }
 }

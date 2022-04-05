@@ -14,8 +14,8 @@ if(row === undefined) {
     // More documentation is available at the API endpoint for this
 
     // Jounral database
-    // entry_num is there to signify the number of posts; this should appear on the frontend as well
-    // if it's the user's first entry of the day, the number will be one and increment from there
+    // Only one entry per day for each user
+    // Check is performed in the API
     const sqlInit = `
         CREATE TABLE user ( 
             username TEXT PRIMARY KEY,
@@ -27,8 +27,7 @@ if(row === undefined) {
             id INTEGER PRIMARY KEY,
             date TEXT,
             username TEXT,
-            entry TEXT,
-            entry_num INTEGER);`;
+            entry TEXT);`;
     db.exec(sqlInit)
 } else {
     console.log('User database exists.')

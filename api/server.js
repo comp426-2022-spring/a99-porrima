@@ -142,6 +142,68 @@ app.delete("/app/delete/user/:username", (req, res) => {
     }
 });
 
+// API for adding journal entry
+app.post("/app/add/entry/:username", (req, res) => {
+    try {
+        let today = new Date();
+        const yyyy = today.getFullYear();
+        let mm = today.getMonth() + 1; // Months start at 0!
+        let dd = today.getDate();
+
+        if (dd < 10) dd = '0' + dd;
+        if (mm < 10) mm = '0' + mm;
+
+        today = dd + '-' + mm + '-' + yyyy;
+        const stmt = user_db.prepare('INSERT INTO journal (date, username, entry, entry_num) VALUES(?,?,?,?)')
+        const info = stmt.run(today, req.params.username, req.body.entry, req.body.entry_num)
+        res.status(200).json(info)
+    } catch (e) {
+        console.error(e)
+    }
+})
+
+// API to get all entries for a user
+app.get("/app/get/entries/:username", (req, res) => {
+    try {
+        const stmt = user_db.prepare('SELECT date, entry FROM journal WHERE username = ?').get(req.params.username)
+        res.status(200).json(stmt)
+    } catch(e) {
+        console.error(e)
+    }
+})
+
+// API to get all entries
+app.get("/app/get/all/entries", (req, res) => {
+    try {
+        const stmt = user_db.prepare('SELECT * FROM journal').all()
+        res.status(200).json(stmt)
+    } catch (e) {
+        console.error(e)
+    }
+})
+
+// API for updating journal entry
+app.patch("/app/update/entry/:username/:date/:entry_num", (req, res) => {
+    try {
+        const stmt = user_db.prepare('UPDATE journal SET entry = ? WHERE username = ? and date = ? and entry_num = ?')
+        const info = stmt.run(req.body.entry, req.params.username, req.params.date, req.params.entry_num)
+        res.status(200).json(info)
+    } catch (e) {
+        console.error(e)
+    }
+})
+
+// API for deleting journal entry
+app.delete("/app/delete/entry/:username/:date", (req, res) => {
+    try {
+        const stmt = user_db.prepare('DELETE FROM journal WHERE username = ? and date = ?')
+        const info = stmt.run(req.params.username, req.params.date)
+        res.status(200).json(info)
+    } catch (e) {
+        console.error(e)
+    }
+})
+
 function stop() {
     appServer.close();
   };

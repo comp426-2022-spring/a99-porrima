@@ -12,13 +12,23 @@ if(row === undefined) {
     // Other tables will be defined with id as primary key to make joins easier
     // Both password and salt will be hashed values
     // More documentation is available at the API endpoint for this
+
+    // Jounral database
+    // entry_num is there to signify the number of posts; this should appear on the frontend as well
+    // if it's the user's first entry of the day, the number will be one and increment from there
     const sqlInit = `
         CREATE TABLE user ( 
             username TEXT PRIMARY KEY,
             email TEXT,
             password TEXT,
             salt TEXT);
-        `;
+
+        CREATE TABLE journal (
+            id INTEGER PRIMARY KEY,
+            date TEXT,
+            username TEXT,
+            entry TEXT,
+            entry_num INTEGER);`;
     db.exec(sqlInit)
 } else {
     console.log('User database exists.')

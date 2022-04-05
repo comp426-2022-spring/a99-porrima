@@ -27,8 +27,7 @@ if(row === undefined) {
             id INTEGER PRIMARY KEY,
             date TEXT,
             username TEXT,
-            entry TEXT,
-            entry_num INTEGER);`;
+            entry TEXT);`;
     db.exec(sqlInit)
 } else {
     console.log('User database exists.')

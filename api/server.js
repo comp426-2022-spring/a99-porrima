@@ -154,9 +154,16 @@ app.post("/app/add/entry/:username", (req, res) => {
         if (mm < 10) mm = '0' + mm;
 
         today = dd + '-' + mm + '-' + yyyy;
-        const stmt = user_db.prepare('INSERT INTO journal (date, username, entry, entry_num) VALUES(?,?,?,?)')
-        const info = stmt.run(today, req.params.username, req.body.entry, req.body.entry_num)
-        res.status(200).json(info)
+
+        const check = user_db.prepare('SELECT * FROM journal WHERE date = ? and username = ?').get(today, req.params.username)
+
+        if(check == null){
+            const stmt = user_db.prepare('INSERT INTO journal (date, username, entry) VALUES(?,?,?)')
+            const info = stmt.run(today, req.params.username, req.body.entry)
+            res.status(200).json(info)
+        }
+
+        res.status(200).json({"message":"Entry exists for this user on this day."})
     } catch (e) {
         console.error(e)
     }
@@ -183,10 +190,10 @@ app.get("/app/get/all/entries", (req, res) => {
 })
 
 // API for updating journal entry
-app.patch("/app/update/entry/:username/:date/:entry_num", (req, res) => {
+app.patch("/app/update/entry/:username/:date/", (req, res) => {
     try {
-        const stmt = user_db.prepare('UPDATE journal SET entry = ? WHERE username = ? and date = ? and entry_num = ?')
-        const info = stmt.run(req.body.entry, req.params.username, req.params.date, req.params.entry_num)
+        const stmt = user_db.prepare('UPDATE journal SET entry = ? WHERE username = ? and date = ?')
+        const info = stmt.run(req.body.entry, req.params.username, req.params.date)
         res.status(200).json(info)
     } catch (e) {
         console.error(e)

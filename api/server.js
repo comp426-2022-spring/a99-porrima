@@ -91,12 +91,12 @@ app.get('/app/user/exists', (req, res) => {
 })
 
 // API endpoint for user signing in
-app.get('/app/user/signin/:username/:password', (req, res) => {
+app.get('/app/user/signin/', (req, res) => {
     try {
         let sign_in = false
         let user_data = {
-            user: req.params.username,
-            pass: req.params.password
+            user: req.body.username,
+            pass: req.body.password
         }
         const stmt = user_db.prepare('SELECT * FROM user WHERE username = ?').get(user_data.user)
         if(stmt.password == String(md5(user_data.pass + stmt.salt))) {

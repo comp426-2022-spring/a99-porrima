@@ -12,6 +12,7 @@ if(row === undefined) {
     // Standard attributes for log db
     const sqlInit = `
         CREATE TABLE accesslog ( 
+            id INTEGER PRIMARY KEY,
             remoteaddr TEXT,
             remoteuser TEXT,
             time TEXT,

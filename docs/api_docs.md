@@ -29,7 +29,7 @@ curl --data "username=user&password=password&email=email@email.com" http://local
     * Returns all values in the user db
 ### cURL
 ```
-
+curl http://localhost:3000/app/user/exists
 ```
 ### Response
 ```
@@ -40,12 +40,12 @@ curl --data "username=user&password=password&email=email@email.com" http://local
 
 ```
 
-* '/app/user/signin/' (GET)
+* '/app/user/signin/' (POST)
     * Used for debugging
     * Checks to make sure a user would be able to sign in with correct username and password
 ### cURL
 ```
-
+curl --data "username=username&password=password" http://localhost:3000/app/user/signin/
 ```
 ### Response
 ```

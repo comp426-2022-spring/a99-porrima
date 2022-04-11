@@ -11,10 +11,10 @@ const fs = require("fs");
 const accessLog = fs.createWriteStream("./data/log/access.log", { flags: "a" });
 app.use(morgan("combined", { stream: accessLog }));
 
-app.use('/', routes)
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json())
 app.use(express.static('./public'))
+app.use('/', routes)
 
 const args = require("minimist")(process.argv.slice(2));
 

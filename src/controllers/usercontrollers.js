@@ -48,7 +48,7 @@ const userSignin = (req, res) => {
     if (stmt.password == String(md5(user_data.pass + stmt.salt))) {
       sign_in = true;
     }
-    res.status(200).json({ signed_in: sign_in });
+    res.status(200).json({ signedin: sign_in });
   } catch (e) {
     console.error(e);
   }

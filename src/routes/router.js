@@ -20,7 +20,7 @@ router.get('/app/log/access', logController.getLogs)
 // User routing
 router.post('/app/new/user/', userController.newUser)
 router.get('/app/user/exists', userController.userExists)
-router.post('/app/user/signin', userController.userSignin)
+router.post('/app/user/signin/', userController.userSignin)
 router.patch('/app/update/user/', userController.updateUser)
 router.delete('/app/delete/user/', userController.deleteUser)
 

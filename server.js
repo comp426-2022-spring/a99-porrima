@@ -5,12 +5,16 @@ const app = express()
 // Get routes
 const routes = require('./src/routes/router')
 
+// Cors
+const cors = require('cors')
+
 // Create access log file
 const morgan = require("morgan");
 const fs = require("fs");
 const accessLog = fs.createWriteStream("./data/log/access.log", { flags: "a" });
 app.use(morgan("combined", { stream: accessLog }));
 
+app.use(cors())
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json())
 app.use(express.static('./porrima-app'))

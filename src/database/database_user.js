@@ -2,7 +2,7 @@
 
 const Database = require('better-sqlite3')
 
-// Push to data directory
+// Push to data directory in user
 const db = new Database('./data/user/user.db')
 
 const stmt = db.prepare(`SELECT name FROM sqlite_master WHERE type='table' and name='user';`)

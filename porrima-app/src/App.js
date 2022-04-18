@@ -8,22 +8,43 @@ import Journal from "./components/Journal/journal";
 import useToken from "./components/App/useToken";
 
 function App() {
-  const { token, setToken } = useToken()
+  const { token, setToken } = useToken();
 
-  if(token === undefined) {
-    return <Login setToken={setToken} />
+  if (token === undefined) {
+    return <Login setToken={setToken} />;
   }
 
-  return ( 
-  <div className="wrapper">
-    <h1>Health Journal</h1>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/home" element={<Home/>} />
-        <Route path="/journal" element={<Journal/>} />
-      </Routes>
-    </BrowserRouter>
-  </div>
+  const signOut = async (e) => {
+    e.preventDefault();
+    localStorage.clear();
+    window.location.reload(false);
+  };
+
+  const goHome = async (e) => {
+    e.preventDefault();
+    window.location = "/home";
+  };
+
+  const goJournal = async (e) => {
+    e.preventDefault();
+    window.location = "/journal";
+  };
+
+  return (
+    <div className="wrapper">
+      <h1>The Health Journal</h1>
+      <button onClick={signOut}>Log Out</button>
+      <nav>
+        <button onClick={goHome}>Home</button>
+        <button onClick={goJournal}>Journal</button>
+      </nav>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/journal" element={<Journal />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 

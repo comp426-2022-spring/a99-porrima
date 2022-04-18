@@ -91,7 +91,7 @@ curl --data "username=username&password=password" http://localhost:3000/app/user
 ```
 
 ## Journal APIs
-## /app/add/entry/:username (POST)
+## /app/add/entry/ (POST)
 * A date (generated in the API), username, entry (body params) are stored in the journal table
 * A check is performed to ensure that a journal entry doesn't exist for this date; if there is, a new journal entry is not created
 ### cURL
@@ -107,7 +107,7 @@ curl --data "username=username&password=password" http://localhost:3000/app/user
 
 ```
 
-## /app/get/entries/:username (GET)
+## /app/get/entries/ (GET)
 * Used to get all journal entries for a user
 * Only argument needed is username which is passed through a parameter
 ### cURL

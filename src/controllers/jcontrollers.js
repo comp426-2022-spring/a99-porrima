@@ -10,7 +10,7 @@ const newEntry = (req, res) => {
     if (dd < 10) dd = "0" + dd;
     if (mm < 10) mm = "0" + mm;
 
-    today = dd + "-" + mm + "-" + yyyy;
+    today = req.body.date || dd + "-" + mm + "-" + yyyy;
 
     const check = user_db
       .prepare("SELECT * FROM journal WHERE date = ? and username = ?")
@@ -22,11 +22,11 @@ const newEntry = (req, res) => {
       );
       const info = stmt.run(today, req.body.username, req.body.entry);
       res.status(200).json(info);
+    } else {
+      res
+        .status(200)
+        .json({ message: "Entry exists for this user on this day." });
     }
-
-    res
-      .status(200)
-      .json({ message: "Entry exists for this user on this day." });
   } catch (e) {
     console.error(e);
   }
@@ -77,4 +77,10 @@ const deleteEntry = (req, res) => {
   }
 };
 
-module.exports = { newEntry, userEntries, allEntries, updateEntry, deleteEntry };
+module.exports = {
+  newEntry,
+  userEntries,
+  allEntries,
+  updateEntry,
+  deleteEntry,
+};

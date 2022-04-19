@@ -69,69 +69,76 @@ export default function Login({ setToken }) {
 
   return (
     <div className="login-page-wrapper">
-      <section className="parent">
-        <div className="login-wrapper">
-          <h1>Log In</h1>
-          <form onSubmit={handleSubmit}>
-            <label>
-              <p>Username</p>
-              <input
-                className="login-input"
-                type="text"
-                onChange={(e) => setUserName(e.target.value)}
-              />
-            </label>
-            <label>
-              <p>Password</p>
-              <input
-                className="login-input"
-                type="password"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </label>
-            <div>
-              <button className="login-input" type="submit">
-                Submit
-              </button>
-            </div>
-          </form>
-        </div>
-
-        <div className="signup-wrapper">
-          <h2>Sign-up for The Health Journal</h2>
-          <form onSubmit={handleSignUp}>
-            <label>
-              <p>Email</p>
-              <input
-                className="signup-input"
-                type="text"
-                onChange={(e) => setNewEmail(e.target.value)}
-              />
-            </label>
-            <label>
-              <p>Username</p>
-              <input
-                className="signup-input"
-                type="text"
-                onChange={(e) => setUserName(e.target.value)}
-              />
-            </label>
-            <label>
-              <p>Password</p>
-              <input
-                className="signup-input"
-                type="password"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </label>
-            <div>
-              <button className="signup-input" type="submit">
-                Sign Up
-              </button>
-            </div>
-          </form>
-        </div>
-      </section>
+      <table>
+        <tablebody>
+          <tr>
+            <td>
+              <div className="login-wrapper">
+                <h1>Log In</h1>
+                <form onSubmit={handleSubmit}>
+                  <label>
+                    <p>Username</p>
+                    <input
+                      className="login-input"
+                      type="text"
+                      onChange={(e) => setUserName(e.target.value)}
+                    />
+                  </label>
+                  <label>
+                    <p>Password</p>
+                    <input
+                      className="login-input"
+                      type="password"
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </label>
+                  <div>
+                    <button className="login-input" type="submit">
+                      Submit
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </td>
+            <td>
+              <div className="signup-wrapper">
+                <h2>Sign-up for The Health Journal</h2>
+                <form onSubmit={handleSignUp}>
+                  <label>
+                    <p>Email</p>
+                    <input
+                      className="signup-input"
+                      type="text"
+                      onChange={(e) => setNewEmail(e.target.value)}
+                    />
+                  </label>
+                  <label>
+                    <p>Username</p>
+                    <input
+                      className="signup-input"
+                      type="text"
+                      onChange={(e) => setUserName(e.target.value)}
+                    />
+                  </label>
+                  <label>
+                    <p>Password</p>
+                    <input
+                      className="signup-input"
+                      type="password"
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </label>
+                  <div>
+                    <button className="signup-input" type="submit">
+                      Sign Up
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </td>
+          </tr>
+        </tablebody>
+      </table>
     </div>
   );
 }

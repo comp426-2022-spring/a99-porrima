@@ -28,7 +28,7 @@ router.delete('/app/delete/user/', userController.deleteUser)
 router.post('/app/new/entry/', jController.newEntry)
 router.post('/app/user/entries/', jController.userEntries)
 router.get('/app/all/entries', jController.allEntries)
-router.patch('/app/update/entry', jController.updateEntry)
+router.patch('/app/update/entry/', jController.updateEntry)
 router.delete('/app/delete/entry', jController.deleteEntry)
 
 // Health goals routing

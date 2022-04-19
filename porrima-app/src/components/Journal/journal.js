@@ -37,30 +37,28 @@ const entries = async (e) => {
   const vals = await getEntries({ username });
   try {
     for (var key in vals) {
-      const n = document.createElement("tr")
-      const d = document.createElement("td").innerHTML = vals[key]
-      n.append(d)
-      const e = document.createElement("td").innerHTML = vals[key]
-      n.append(e)
-      document.getElementById(key).append(n)
+      const n = document.createElement("tr");
+      const d = (document.createElement("td").innerHTML = vals[key]);
+      n.append(d);
+      document.getElementById(key).append(n);
     }
   } catch (e) {
-    console.error(e)
+    console.error(e);
   }
 };
 
 export default function Journal() {
-
-  useEffect(() => {
-    console.log("hello")
-  }, []);
-
   const deleteEntry = async (e) => {
     const data = JSON.parse(localStorage.getItem("token"));
     const username = data.user;
     await dEntry({ username });
     window.location.reload(false);
   };
+
+  useEffect(() => {
+    entries();
+    console.log("hello")
+  }, []);
 
   return (
     <div className="journal-wrapper">

@@ -20,13 +20,11 @@ function App() {
     window.location.reload(false);
   };
 
-  const goHome = async (e) => {
-    e.preventDefault();
+  function goHome() {
     window.location = "/home";
   };
 
-  const goJournal = async (e) => {
-    e.preventDefault();
+  function goJournal() {
     window.location = "/journal";
   };
 

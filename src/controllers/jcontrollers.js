@@ -10,21 +10,23 @@ const newEntry = (req, res) => {
     if (dd < 10) dd = "0" + dd;
     if (mm < 10) mm = "0" + mm;
 
-    today = req.body.date || dd + "-" + mm + "-" + yyyy;
+    today = dd + "-" + mm + "-" + yyyy;
+
+    const day = req.body.date || today
 
     const check = user_db
-      .prepare("SELECT * FROM journal WHERE date = ? and username = ?")
-      .get(today, req.params.username);
+      .prepare("SELECT date, entry FROM journal WHERE date = ? and username = ?").get(day, req.body.username)
+      
 
-    if (check == null) {
+    if (check === undefined) {
       const stmt = user_db.prepare(
         "INSERT INTO journal (date, username, entry) VALUES(?,?,?)"
       );
-      const info = stmt.run(today, req.body.username, req.body.entry);
+      const info = stmt.run(day, req.body.username, req.body.entry);
       res.status(200).json(info);
     } else {
       res
-        .status(200)
+        .status(400)
         .json({ message: "Entry exists for this user on this day." });
     }
   } catch (e) {
@@ -35,8 +37,7 @@ const newEntry = (req, res) => {
 const userEntries = (req, res) => {
   try {
     const stmt = user_db
-      .prepare("SELECT date, entry FROM journal WHERE username = ?")
-      .get(req.body.username);
+      .prepare("SELECT date, entry FROM journal WHERE username = ?").all(req.body.username);
     res.status(200).json(stmt);
   } catch (e) {
     console.error(e);

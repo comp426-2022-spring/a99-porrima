@@ -1,12 +1,9 @@
 table, th, td {
     border: 3px slategray;
+    text-align: center;
 }
 
 table {
     width: 100%;
     border: 3px slategray;
-}
-
-td {
-    text-align: center;
 }

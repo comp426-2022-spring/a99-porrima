@@ -2,9 +2,6 @@ const request = require("supertest");
 const expect = require("chai").expect;
 const app = require("../server");
 
-// TESTING NEEDS WORK
-// CURRENTLY ADDED NULL VALUES TO THE DB; THE REQUESTS NEED TO CHANGE
-
 describe("POST /new/user/", () => {
   const user = { username: "user1", password: "abc", email: "email@email.com" };
   it("Adds new user to user database", (done) => {

@@ -6,8 +6,6 @@ An open source healthcare management app, aimed to organize and assist in the pr
 
 The team for this project is comprised of students at UNC-CH.
 
-## Development Tools and Links
-
 ## Documentation
 
 Can be found in the [docs](https://github.com/mattsg6/a99-porrima/tree/main/docs) folder.
@@ -18,7 +16,7 @@ A GitHub repository containing your code and documentation and a prototype relea
 
 `npm install` - Install dependencies for your package.<br />
 `npm test` - Start app, check that everything can run, and then stop app.<br />
-`npm run` - Command to bring up all parts of the app/system’s server scripts.<br />
+`npm start` - Command to bring up all parts of the app/system’s server scripts.<br />
 Your team is responsible for incorporating the following specifications and deliverables into your final project:
 
 1. Back-end specifications

@@ -30,7 +30,10 @@ function App() {
 
   return (
     <div className="wrapper">
-      <h1>The Health Journal</h1>
+      <div class="header">
+        <h1>The Health Journal</h1>
+      </div>
+      
       <button onClick={signOut}>Log Out</button>
       <nav>
         <button onClick={goHome}>Home</button>

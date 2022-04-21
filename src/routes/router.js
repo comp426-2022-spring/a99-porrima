@@ -33,8 +33,8 @@ router.delete('/app/delete/entry', jController.deleteEntry)
 
 // Health goals routing
 router.get('/app/healthgoals/', hgcontroller.getGoals)
-router.post('/app/healthgoals/addgoals', hgcontroller.addGoals)
-router.patch('/app/healthgoals/updategoals', hgcontroller.updateGoal)
+router.post('/app/healthgoals/addgoal', hgcontroller.addGoal)
+router.patch('/app/healthgoals/updategoal', hgcontroller.updateGoal)
 router.delete('/app/healthgoals/deletegoal', hgcontroller.deleteGoal)
 
 router.use(middleware.notFound)

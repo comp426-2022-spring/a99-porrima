@@ -149,6 +149,58 @@ describe("DELETE /update/entry/", () => {
   });
 });
 
+// Health goals
+
+describe("POST /healthgoals/addgoal/", () => {
+  const data = { username: "test1", day: "monday", goal: "80 burpees" };
+  it("Adds given goal on given day for user", (done) => {
+    request(app)
+      .post("/app/healthgoals/addgoal/")
+      .send(data)
+      .expect(200)
+      .end((err, res) => {
+        done();
+      });
+  });
+});
+
+describe("GET /healthgoals", () => {
+  it("Gets health goals for user", (done) => {
+    request(app)
+      .get("/app/healthgoals/?username=test1")
+      .expect(200)
+      .end((err, res) => {
+        done();
+      });
+  });
+});
+
+describe("PATCH /healthgoals/updategoal/", () => {
+  const data = { username: "test1", day: "monday", goal: "50 pushups" };
+  it("Updates given day with inputted goal", (done) => {
+    request(app)
+      .patch("/app/healthgoals/updategoal/")
+      .send(data)
+      .expect(200)
+      .end((err, res) => {
+        done();
+      });
+  });
+});
+
+describe("DELETE healthgoals/deletegoal/", () => {
+  const user = { username: "user1", day: "monday" };
+  it("Deletes goal at given day", (done) => {
+    request(app)
+      .delete("/app/healthgoals/deletegoal/")
+      .send(user)
+      .expect(200)
+      .end((err, res) => {
+        done();
+      });
+  });
+});
+
 after(async () => {
   require("../server").stop();
 });

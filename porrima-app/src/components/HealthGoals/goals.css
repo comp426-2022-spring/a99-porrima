@@ -1,0 +1,19 @@
+.grid-container{
+    text-align: center;
+    padding: 10px;
+}
+
+.grid-item {
+    display: inline-block;
+    height: 100px;
+    width: 200px;
+    border: 0.5px solid black;
+    text-align: center;
+    margin: 0.5px;
+}
+
+.buttons {
+    padding: 10px;
+    text-align: center;
+}
+

@@ -6,6 +6,7 @@ import Login from "./components/Login/login";
 import Home from "./components/Home/home";
 import Journal from "./components/Journal/journal";
 import useToken from "./components/App/useToken";
+import HealthGoal from "./components/HealthGoals/goals";
 
 function App() {
   const { token, setToken } = useToken();
@@ -28,6 +29,10 @@ function App() {
     window.location = "/journal";
   };
 
+  function goHealthGoals() {
+    window.location = "/healthgoals";
+  };
+
   return (
     <div className="wrapper">
       <div class="header">
@@ -38,11 +43,13 @@ function App() {
       <nav>
         <button onClick={goHome}>Home</button>
         <button onClick={goJournal}>Journal</button>
+        <button onClick={goHealthGoals}>Weekly Goals</button>
       </nav>
       <BrowserRouter>
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/journal" element={<Journal />} />
+          <Route path="/healthgoals" element={<HealthGoal />} />
         </Routes>
       </BrowserRouter>
     </div>

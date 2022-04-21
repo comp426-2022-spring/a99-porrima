@@ -5,28 +5,32 @@ async function getGoals(req, res) {
         user: req.query.username
     }
     try {
-        const stmt = goals_db.prepare('SELECT * FROM user_health_goals WHERE username = ?').get(data.user)
+        const stmt = goals_db.prepare('SELECT monday, tuesday, wednesday, thursday, friday, saturday, sunday FROM user_health_goals WHERE username = ?').get(data.user)
         res.status(200).json(stmt)
     } catch(e) {
         console.error(e)
     }
 }
 
-async function addGoals(req, res) {
+async function addGoal(req, res) {
     let data = {
         user: req.body.username,
-        mon: req.body.monday,
-        tue: req.body.tuesday,
-        wed: req.body.wednesday,
-        thurs: req.body.thursday,
-        fri: req.body.friday,
-        sat: req.body.saturday,
-        sun: req.body.sunday
+        day: req.body.day,
+        goal: req.body.goal
     }
     try {
-        const sqlInit = `INSERT INTO user_health_goals(username, monday, tuesday, wednesday, thursday, friday, saturday, sunday) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
+        const check = goals_db
+            .prepare('SELECT * FROM user_health_goals WHERE username = ?')
+            .get(data.user)
+
+        if (check == null) {
+            console.log('Adding to goals database.')
+            goals_db.prepare('INSERT INTO user_health_goals(username) VALUES (?)').run(data.user)
+        }
+
+        const sqlInit = `UPDATE user_health_goals SET ${data.day} = COALESCE(?, ${data.day}) WHERE username = ?`;
         const stmt = goals_db.prepare(sqlInit);
-        const info = stmt.run(Object.values(data));
+        const info = stmt.run(data.goal, data.user);
         res.status(200).json(info);
     } catch(e) {
         console.error(e)
@@ -63,4 +67,4 @@ async function deleteGoal(req, res) {
     }
 }
 
-module.exports = { getGoals, addGoals, updateGoal, deleteGoal };
+module.exports = { getGoals, addGoal, updateGoal, deleteGoal };

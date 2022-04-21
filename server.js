@@ -34,8 +34,3 @@ function stop() {
 
 module.exports = app
 module.exports.stop = stop
-
-// FOR TESTING
-// curl --data "email=thegilmores.matt@gmail.com&username=mattsg&password=abc123" http://localhost:3000/app/new/user
-// curl -X DELETE "localhost:3000/app/delete/user/iamfake"
-// curl -X PATCH http://localhost:3000/app/update/user/mattsg -H "Content-Type: application/json" -d '{"username":"matthew","password":"abc123","email":"mgilmore@katchdata.com"}'

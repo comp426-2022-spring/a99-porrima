@@ -7,6 +7,7 @@ import Home from "./components/Home/home";
 import Journal from "./components/Journal/journal";
 import useToken from "./components/App/useToken";
 import HealthGoal from "./components/HealthGoals/goals";
+import BMICal from "./components/BMICalculator/BMI";
 
 function App() {
   const { token, setToken } = useToken();
@@ -33,6 +34,10 @@ function App() {
     window.location = "/healthgoals";
   };
 
+  function goBMICal(){
+    window.location = "/BMI"
+  }
+
   return (
     <div className="wrapper">
       <div class="header">
@@ -44,12 +49,14 @@ function App() {
         <button onClick={goHome}>Home</button>
         <button onClick={goJournal}>Journal</button>
         <button onClick={goHealthGoals}>Weekly Goals</button>
+        <button onClick={goBMICal}>BMI Calculator</button>
       </nav>
       <BrowserRouter>
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/journal" element={<Journal />} />
           <Route path="/healthgoals" element={<HealthGoal />} />
+          <Route path="/BMI" element={<BMICal />} />
         </Routes>
       </BrowserRouter>
     </div>

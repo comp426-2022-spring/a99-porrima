@@ -29,12 +29,26 @@ function App() {
   };
 
   return (
+    
     <div className="wrapper">
+      <img src="logo.png" alt="logo"></img>
       <div class="header">
-        <h1>The Health Journal</h1>
+      
+      <div class="container">
+      
+      <h1>The Health Journal</h1>
+      <div class="signout">
+        <button onClick={signOut}>Log Out</button>
       </div>
       
-      <button onClick={signOut}>Log Out</button>
+      </div>
+        
+        
+        
+      <hr></hr>
+      </div>
+      
+      
       <nav>
         <button onClick={goHome}>Home</button>
         <button onClick={goJournal}>Journal</button>

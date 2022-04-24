@@ -227,26 +227,66 @@ Connection: keep-alive
 Keep-Alive: timeout=5
 ```
 
-## /app/delete/entry/ (DELETE)
-* Used for deleting a journal entry
+## /app/healthgoals/ (GET)
+* Returns all the daily goals for user
 * Username and date are required to be passed through body params
 ### cURL
 ```
-curl -X DELETE "http://localhost:3000/app/delete/entry/?username=user&date=21-04-2022" -H "Accept: application/json"
+
 ```
 ### Response
 ```
-{"changes":0,"lastInsertRowid":11}
+
 ```
 ### Headers
 ```
-HTTP/1.1 200 OK
-X-Powered-By: Express
-Access-Control-Allow-Origin: *
-Content-Type: application/json; charset=utf-8
-Content-Length: 4134
-ETag: W/"1026-XmWrpcFLyyApjUWWCEoNuOLgKxA"
-Date: Thu, 21 Apr 2022 18:40:17 GMT
-Connection: keep-alive
-Keep-Alive: timeout=5
+
+```
+
+## /app/healthgoals/addgoal (POST)
+* Used for adding goal at a given day
+* Arguments needed is username, day, & goal which is passed through body parameters
+### cURL
+```
+
+```
+### Response
+```
+
+```
+### Headers
+```
+
+```
+
+## /app/healthgoals/updategoal (PATCH)
+* Used for updating a goal at given day
+* Username, day, and goal are required to be passed through body params
+### cURL
+```
+
+```
+### Response
+```
+
+```
+### Headers
+```
+
+```
+
+## /app/healthgoals/deletegoal (DELETE)
+* Used for deleting a goal at given day
+* Arguments needed are username & day which is passed through a body parameters
+### cURL
+```
+
+```
+### Response
+```
+
+```
+### Headers
+```
+
 ```

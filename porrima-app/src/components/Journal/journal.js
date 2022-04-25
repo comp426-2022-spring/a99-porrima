@@ -46,20 +46,33 @@ async function aEntry(userInfo) {
   }
 }
 
-async function uEntry(userInfo) {
-  try {
-    const url = "http://localhost:3000/app/update/entry/";
-    return fetch(url, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userInfo),
-    }).then((data) => data.json());
-  } catch (e) {
-    console.error(e);
-  }
-}
+// async function uEntry(userInfo) {
+//   try {
+//     const url = "http://localhost:3000/app/update/entry/";
+//     return fetch(url, {
+//       method: "PATCH",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(userInfo),
+//     }).then((data) => data.json());
+//   } catch (e) {
+//     console.error(e);
+//   }
+// }
+
+export default function Journal() {
+  const deleteEntry = async (e) => {
+    const data = JSON.parse(localStorage.getItem("token"));
+    const date = document.activeElement.getAttribute("id")
+    const username = data.user;
+    const userInfo = {
+      username,
+      date,
+    };
+    await dEntry(userInfo);
+    window.location.reload(false);
+  };
 
 const entries = async (e) => {
   const data = JSON.parse(localStorage.getItem("token"));
@@ -67,21 +80,39 @@ const entries = async (e) => {
   const vals = await getEntries({ username });
   try {
     for (let i = 0; i < Object.keys(vals).length; i++) {
-      let obj = vals[i];
-      const n = document.createElement("div")
-      n.classList.add("log")
-      const h = document.createElement("div")
-      h.innerHTML = obj["date"]
-      h.classList.add("text")
-      const e = document.createElement("div")
-      e.innerHTML = obj["entry"]
-      e.classList.add("log")
-      h.append(e)
-      n.append(h)
-      const b = document.createElement("button")
-      b.setAttribute("onClick", dEntry)
-      n.append(b)
-      document.getElementById("logs").append(n)
+      const obj = vals[i]
+      
+      const log = document.createElement("div")
+      log.classList.add("log")
+      
+      const content = document.createElement("div")
+      content.classList.add("content")
+
+      const date = document.createElement("h3")
+      date.classList.add("text")
+      date.innerHTML = obj["date"]
+
+      const entry = document.createElement("div")
+      entry.classList.add("text")
+      entry.innerHTML = obj["entry"]
+
+      content.appendChild(date)
+      content.appendChild(entry)
+      
+      const actions = document.createElement("div")
+      actions.classList.add("actions")
+      
+      const del = document.createElement("button")
+      del.setAttribute("id", obj["date"])
+      del.onclick = deleteEntry;
+      del.innerHTML = "Delete"
+      del.classList.add("delete")
+      
+      actions.appendChild(del)
+      content.appendChild(actions)
+      log.appendChild(content)
+      
+      document.getElementById("logs").appendChild(log)
     }
   } catch (e) {
     console.error(e);
@@ -97,19 +128,6 @@ function formatDate(input) {
   return day + "-" + month + "-" + year;
 }
 
-export default function Journal() {
-  const [d, setDate] = useState();
-  const deleteEntry = async (e) => {
-    const data = JSON.parse(localStorage.getItem("token"));
-    const username = data.user;
-    const date = formatDate(d);
-    const userInfo = {
-      username,
-      date,
-    };
-    await dEntry(userInfo);
-    window.location.reload(false);
-  };
 
   const [entry, setEntry] = useState();
   const addEntry = (async) => {
@@ -123,62 +141,23 @@ export default function Journal() {
     //window.location.reload(false);
   };
 
-  const updateEntry = (async) => {
-    const data = JSON.parse(localStorage.getItem("token"));
-    const username = data.user;
-    const date = formatDate(d);
-    const userInfo = {
-      username,
-      entry,
-      date,
-    };
-    uEntry(userInfo);
-    window.location.reload(false);
-  };
+  // const updateEntry = (async) => {
+  //   const data = JSON.parse(localStorage.getItem("token"));
+  //   const username = data.user;
+  //   const date = formatDate(d);
+  //   const userInfo = {
+  //     username,
+  //     entry,
+  //     date,
+  //   };
+  //   uEntry(userInfo);
+  //   window.location.reload(false);
+  // };
 
   useEffect(() => {
     entries();
   }, []);
-  /*
-  return (
-    <div className="journal-wrapper">
-      <div className="grid-container">
-        <div className="delete-button">
-          <form onSubmit={deleteEntry}>
-            <div className="form-group">
-              <input type="date" onChange={(e) => setDate(e.target.value)} />
-            </div>
-            <button type="submit">Delete entry</button>
-          </form>
-        </div>
-        <div className="add-button">
-          <form onSubmit={addEntry}>
-            <div className="form-group">
-              <input type="text" onChange={(e) => setEntry(e.target.value)} />
-            </div>
-            <button type="submit">Add entry</button>
-          </form>
-        </div>
-        <div className="update-button">
-          <form onSubmit={updateEntry}>
-            <div className="form-group">
-              <input type="date" onChange={(e) => setDate(e.target.value)} />
-              <input type="text" onChange={(e) => setEntry(e.target.value)} />
-            </div>
-            <button type="submit">Change entry</button>
-          </form>
-        </div>
-      </div>
-      <div className="clear-fix"></div>
-      <table className="entry-table" id="entryTable">
-        <tbody>
-          <td id="date" />
-          <td id="entry" />
-        </tbody>
-      </table>
-    </div>
-  );
-  */
+
   return (
     <div className="journal_content">
       <div className="journal_header">
@@ -197,25 +176,6 @@ export default function Journal() {
         <section className="logs-list">
           <h2>Logs</h2>
           <div id="logs">
-            <div className="log">
-              <div id="content" className="content">
-                <input
-                  type="text"
-                  class="text"
-                  readOnly
-                />
-              </div>
-              <div className="actions">
-                <input type="text" placeholder="Change entry" onChange={(e) => setEntry(e.target.value)} />
-                <input type="date" onChange={(e) => setDate(e.target.value)} />
-                <button className="edit" onClick={updateEntry}>
-                  Edit
-                </button>
-                <button className="delete" onClick={deleteEntry}>
-                  Delete
-                </button>
-              </div>
-            </div>
           </div>
         </section>
       </div>

@@ -34,7 +34,7 @@ function BMICal() {
   return (
     <div className="frame">
       <div className='box'>
-        <h2 className='middle'>BMI Calculator</h2>
+        <h1>BMI Calculator</h1>
         <form onSubmit={calculator}>
           <div>
             <label>Enter your Weight (lbs)</label>

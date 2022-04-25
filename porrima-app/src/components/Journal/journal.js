@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./journal.css";
 
-
-
-
 async function getEntries(username) {
   try {
     const url = "http://localhost:3000/app/user/entries/";
@@ -71,12 +68,20 @@ const entries = async (e) => {
   try {
     for (let i = 0; i < Object.keys(vals).length; i++) {
       let obj = vals[i];
-      for (var key in obj) {
-        const n = document.createElement("tr");
-        const d = (document.createElement("td").innerHTML = obj[key]);
-        n.append(d);
-        document.getElementById(key).append(n);
-      }
+      const n = document.createElement("div")
+      n.classList.add("log")
+      const h = document.createElement("div")
+      h.innerHTML = obj["date"]
+      h.classList.add("text")
+      const e = document.createElement("div")
+      e.innerHTML = obj["entry"]
+      e.classList.add("log")
+      h.append(e)
+      n.append(h)
+      const b = document.createElement("button")
+      b.setAttribute("onClick", dEntry)
+      n.append(b)
+      document.getElementById("logs").append(n)
     }
   } catch (e) {
     console.error(e);
@@ -103,7 +108,7 @@ export default function Journal() {
       date,
     };
     await dEntry(userInfo);
-    //window.location.reload(false);
+    window.location.reload(false);
   };
 
   const [entry, setEntry] = useState();
@@ -128,12 +133,13 @@ export default function Journal() {
       date,
     };
     uEntry(userInfo);
+    window.location.reload(false);
   };
 
   useEffect(() => {
     entries();
   }, []);
-/*
+  /*
   return (
     <div className="journal-wrapper">
       <div className="grid-container">
@@ -173,48 +179,46 @@ export default function Journal() {
     </div>
   );
   */
-return(
-<div className="journal_content">
-
-<div className="journal_header">
-<h1>Welcome</h1>
-<form id="entries" onSubmit={addEntry}>
-  <input 
-    type="text"
-    id="new-entry"
-    placeholder="How are you doing today?"/>
-    <input
-      type="submit"
-      id="new-log-submit"
-      value="Enter Log"
-    />
-</form>
-</div>
-<div className="journal_main">
-  <section className="logs-list">
-    <h2>Logs</h2>
-    <div id="logs">
-        <div className="log">
-          <div className="content">
-            <input
-              type="text"
-              class="text"
-              value="Today's Entery"
-              readOnly
-            />
+  return (
+    <div className="journal_content">
+      <div className="journal_header">
+        <h1>Welcome</h1>
+        <form id="entries" onSubmit={addEntry}>
+          <input
+            type="text"
+            id="new-entry"
+            placeholder="How are you doing today?"
+            onChange={(e) => setEntry(e.target.value)}
+          />
+          <input type="submit" id="new-log-submit" value="Enter Log" />
+        </form>
+      </div>
+      <div className="journal_main">
+        <section className="logs-list">
+          <h2>Logs</h2>
+          <div id="logs">
+            <div className="log">
+              <div id="content" className="content">
+                <input
+                  type="text"
+                  class="text"
+                  readOnly
+                />
+              </div>
+              <div className="actions">
+                <input type="text" placeholder="Change entry" onChange={(e) => setEntry(e.target.value)} />
+                <input type="date" onChange={(e) => setDate(e.target.value)} />
+                <button className="edit" onClick={updateEntry}>
+                  Edit
+                </button>
+                <button className="delete" onClick={deleteEntry}>
+                  Delete
+                </button>
+              </div>
+            </div>
           </div>
-          <div className="actions">
-            <button className="edit" onClick={updateEntry}>Edit</button>
-            <button className="delete" onClick={deleteEntry}>Delete</button>
-          </div>
-        </div>
+        </section>
+      </div>
     </div>
-
-  </section>
-
-</div>
-
-</div>
-);
-
+  );
 }

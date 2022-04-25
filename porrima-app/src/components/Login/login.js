@@ -52,18 +52,18 @@ export default function Login({ setToken }) {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-    const userData = await signUpUser({
+    await signUpUser({
       email,
       username,
       password,
     });
-    console.log(userData);
 
     const token = await loginUser({
       username,
       password,
     });
     if (token.token) {
+      window.location = "/home"
       setToken(token);
     }
   };
@@ -82,6 +82,7 @@ export default function Login({ setToken }) {
                     <input
                       className="login-input"
                       type="text"
+                      placeholder="Username"
                       onChange={(e) => setUserName(e.target.value)}
                     />
                   </label>
@@ -90,6 +91,7 @@ export default function Login({ setToken }) {
                     <input
                       className="login-input"
                       type="password"
+                      placeholder="Password"
                       onChange={(e) => setPassword(e.target.value)}
                     />
                   </label>
@@ -110,6 +112,7 @@ export default function Login({ setToken }) {
                     <input
                       className="signup-input"
                       type="text"
+                      placeholder="Email"
                       onChange={(e) => setNewEmail(e.target.value)}
                     />
                   </label>
@@ -118,6 +121,7 @@ export default function Login({ setToken }) {
                     <input
                       className="signup-input"
                       type="text"
+                      placeholder="Username"
                       onChange={(e) => setUserName(e.target.value)}
                     />
                   </label>
@@ -126,6 +130,7 @@ export default function Login({ setToken }) {
                     <input
                       className="signup-input"
                       type="password"
+                      placeholder="Password"
                       onChange={(e) => setPassword(e.target.value)}
                     />
                   </label>

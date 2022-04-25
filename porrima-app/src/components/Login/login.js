@@ -43,6 +43,7 @@ export default function Login({ setToken }) {
       password,
     });
     if (token.token) {
+      window.location = "/home"
       setToken(token);
     }
   };

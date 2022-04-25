@@ -1,5 +1,5 @@
 import React from "react";
-import{ Rimenu3Line, RicloseLin} from 'react-icons/ri';
+// import{ Rimenu3Line, RicloseLin} from 'react-icons/ri';
 import './Navbar.css';
 import logo from '../../assets/Health.png'
 
@@ -7,7 +7,8 @@ import logo from '../../assets/Health.png'
 const signOut = async (e) => {
   e.preventDefault();
   localStorage.clear();
-  window.location.reload(false);
+  window.location = "/"
+  // window.location.reload(false);
 };
 
 function goHome() {

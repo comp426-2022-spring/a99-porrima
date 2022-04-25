@@ -40,7 +40,7 @@ async function aEntry(userInfo) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(userInfo),
-    }).then((data) => data.json())
+    }).then((data) => data.json());
   } catch (e) {
     console.error(e);
   }
@@ -55,7 +55,7 @@ async function uEntry(userInfo) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(userInfo),
-    }).then((data) => data.json())
+    }).then((data) => data.json());
   } catch (e) {
     console.error(e);
   }
@@ -80,12 +80,13 @@ const entries = async (e) => {
   }
 };
 
-function formatDate (input) {
+function formatDate(input) {
   var datePart = input.match(/\d+/g),
-  year = datePart[0].substring(0), // get only two digits
-  month = datePart[1], day = datePart[2];
+    year = datePart[0].substring(0), // get only two digits
+    month = datePart[1],
+    day = datePart[2];
 
-  return day+'-'+month+'-'+year;
+  return day + "-" + month + "-" + year;
 }
 
 export default function Journal() {
@@ -93,38 +94,38 @@ export default function Journal() {
   const deleteEntry = async (e) => {
     const data = JSON.parse(localStorage.getItem("token"));
     const username = data.user;
-    const date = formatDate(d)
+    const date = formatDate(d);
     const userInfo = {
-      username, 
-      date
-    }
+      username,
+      date,
+    };
     await dEntry(userInfo);
     //window.location.reload(false);
   };
 
   const [entry, setEntry] = useState();
-  const addEntry = async => {
+  const addEntry = (async) => {
     const data = JSON.parse(localStorage.getItem("token"));
     const username = data.user;
     const userInfo = {
       entry,
       username,
-    }
+    };
     aEntry(userInfo);
     //window.location.reload(false);
-  }
+  };
 
-  const updateEntry = async => {
+  const updateEntry = (async) => {
     const data = JSON.parse(localStorage.getItem("token"));
     const username = data.user;
-    const date = formatDate(d)
+    const date = formatDate(d);
     const userInfo = {
       username,
       entry,
-      date
-    }
+      date,
+    };
     uEntry(userInfo);
-  }
+  };
 
   useEffect(() => {
     entries();
@@ -134,29 +135,38 @@ export default function Journal() {
     <div className="journal-wrapper">
       <h2>Health Journal</h2>
       <p>Only one entry is allowed per day</p>
-      <form onSubmit={deleteEntry}>
-        <input type="date" onChange={(e) => setDate(e.target.value)} />
-        <button type="submit">Delete entry</button>
-      </form>
-      <form onSubmit={addEntry}>
-        <input type="text" onChange={(e) => setEntry(e.target.value)} />
-        <button type="submit">Add entry</button>
-      </form>
-      <form onSubmit={updateEntry}>
-        <input type="date" onChange={(e) => setDate(e.target.value)} />
-        <input type="text" onChange={(e) => setEntry(e.target.value)} />
-        <button type="submit">Change entry</button>
-      </form>
-      <table>
-        <tbody id="entryTable">
-          <tr>
-            <th>Date</th>
-            <th>Entry</th>
-          </tr>
-          <tr>
-            <td id="date" />
-            <td id="entry" />
-          </tr>
+      <div className="grid-container">
+        <div className="delete-button">
+          <form onSubmit={deleteEntry}>
+            <div className="form-group">
+              <input type="date" onChange={(e) => setDate(e.target.value)} />
+            </div>
+            <button type="submit">Delete entry</button>
+          </form>
+        </div>
+        <div className="add-button">
+          <form onSubmit={addEntry}>
+            <div className="form-group">
+              <input type="text" onChange={(e) => setEntry(e.target.value)} />
+            </div>
+            <button type="submit">Add entry</button>
+          </form>
+        </div>
+        <div className="update-button">
+          <form onSubmit={updateEntry}>
+            <div className="form-group">
+              <input type="date" onChange={(e) => setDate(e.target.value)} />
+              <input type="text" onChange={(e) => setEntry(e.target.value)} />
+            </div>
+            <button type="submit">Change entry</button>
+          </form>
+        </div>
+      </div>
+      <div className="clear-fix"></div>
+      <table className="entry-table" id="entryTable">
+        <tbody>
+          <td id="date" />
+          <td id="entry" />
         </tbody>
       </table>
     </div>

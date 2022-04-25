@@ -47,7 +47,7 @@ const userSignin = (req, res) => {
       .get(user_data.user);
     if (stmt != undefined && stmt.password == String(md5(user_data.pass + stmt.salt))) {
       sign_in = true;
-      res.status(200).json({ token: sign_in, user: user_data.user });
+      res.status(200).json({ token: sign_in, user: user_data.user, email: stmt.email });
     }
     else{
       res.status(401).json({ token: sign_in })

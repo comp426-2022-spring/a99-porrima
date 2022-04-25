@@ -27,6 +27,10 @@ function goBMICal(){
   window.location = "/BMI"
 }
 
+function goAccount() {
+  window.location = "/account"
+}
+
 const navbar = () => {
   return (
     <div className="navbar">
@@ -40,6 +44,7 @@ const navbar = () => {
               <p><a href="#journal" onClick={goJournal}>Journal</a></p>
               <p><a href="#healthgoals" onClick={goHealthGoals}>Weekly Goals</a></p>
               <p><a href="#bmicalc" onClick={goBMICal}>BMI Calculator</a></p>
+              <p><a href="#account" onClick={goAccount}>Account</a></p>
             </div>
         </div>
         <div className="navbar_logout">

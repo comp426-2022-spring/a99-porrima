@@ -9,6 +9,7 @@ import useToken from "./components/App/useToken";
 import HealthGoal from "./components/HealthGoals/goals";
 import BMICal from "./components/BMICalculator/BMI";
 import Navbar from "./components/Navbar/Navbar";
+import Account from "./components/Account/account";
 
 function App() {
   const { token, setToken } = useToken();
@@ -29,6 +30,7 @@ function App() {
           <Route path="/journal" element={<Journal />} />
           <Route path="/healthgoals" element={<HealthGoal />} />
           <Route path="/BMI" element={<BMICal />} />
+          <Route path="/account" element={<Account />} />
         </Routes>
       </BrowserRouter>
     </div>

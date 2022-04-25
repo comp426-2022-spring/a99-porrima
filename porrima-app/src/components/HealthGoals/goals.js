@@ -110,10 +110,18 @@ export default function HealthGoal() {
     
     function handleHidden(id) {
         const doc = document.getElementById(id)
-        if (doc.getAttribute("hidden") === "true") {
-            doc.removeAttribute("hidden")
+        const ids = ["add_form", "delete_form", "update_form"]
+        //console.log(doc.style.)
+        if (doc.style.display === "none") {
+            ids.forEach(i => {
+                if (i !== id) {
+                    let doc_ = document.getElementById(i)
+                    doc_.style.display = "none"
+                }
+            })
+            doc.style.display = "block"
         } else {
-            doc.setAttribute("hidden", true)
+            doc.style.display = "none"
         }
     }
 
@@ -167,18 +175,19 @@ export default function HealthGoal() {
                 <button onClick={function() {handleHidden("update_form")}}>Edit goal</button>
             </div>
             <div className="forms">
-                <div id="add_form" hidden={true}>
+                <div id="add_form" style={{display:'none'}}>
                     <form onSubmit={add}>
                         <select id="day" onChange={handleDay}>
                             <option value="Pick a day">Pick a day</option>
                             {days.map((day) =>  ( 
                             <option value={day}>{day}</option>))}
                         </select>
-                        <input type="text" id="goal" onChange={handleGoal}></input>
+                        <br />
+                        <input type="text" id="goal" placeholder="Enter goal" onChange={handleGoal}></input>
                         <button type="submit">Add goal</button>
                     </form>
                 </div>
-                <div id="delete_form" hidden={true}>
+                <div id="delete_form" style={{display:'none'}}>
                     <form onSubmit={del}>
                         <select id="day" onChange={handleDay}>
                             <option value="Pick a day">Pick a day</option>
@@ -188,14 +197,15 @@ export default function HealthGoal() {
                         <button type="submit">Delete goal</button>
                     </form>
                 </div>
-                <div id="update_form" hidden={true}>
+                <div id="update_form" style={{display:'none'}}>
                     <form onSubmit={update}>
                         <select id="day" onChange={handleDay}>
                             <option value="Pick a day">Pick a day</option>
                             {days.map((day) =>  ( 
                             <option value={day}>{day}</option>))}
                         </select>
-                        <input type="text" id="goal" onChange={handleGoal}></input>
+                        <br />
+                        <input type="text" id="goal" placeholder="Enter goal" onChange={handleGoal}></input>
                         <button type="submit">Update goal</button>
                     </form>
                 </div>

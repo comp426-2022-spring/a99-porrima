@@ -1,10 +1,151 @@
-h2, p {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.journal_content{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.journal_header{
+    padding: 2rem 1rem;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto ;
+}
+#entries{
+    display: flex;
+}
+
+
+input, button{
+    appearance: none ;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+
+
+#new-entry{
+    background-color:  #badbec;
+    padding: 1 rem;
+    border-radius: 1rem;
+    margin-right: 1rem;
+    color: white;
+}
+#new-log-submit{
+    flex: 1 1 0%;
+    color: #8ec386;
+    background-image: linear-gradient(to right,#8ec386, #028ed9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
+    transition: 0.4s;
+}
+
+#new-log-submit:hover{
+    opacity: 0.8;
+}
+
+#new-log-submit:active{
+    opacity: 0.6;
+}
+
+.journal_main{
+    flex: 1 1 0%;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+
+}
+
+.logs-list{
+    padding: 1rem;
+}
+
+.logs-list h2{
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: #6ca2be;
+    margin-bottom: 1rem;
+}
+
+#logs .log{
+    display: flex;
+    justify-content: space-between;
+    background-color:  #8ec386 ;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+}
+
+#logs .log .content .text{
+    color: white;
+    font-size: 18px;
+    width: 100%;
+    display: block;
+    transition: 0.4s;
+}
+
+#logs .log .content .text:not(:read-only){
+    color: #8ec386;
+    background-image: linear-gradient(to right,#BDEA37, #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#logs .log .actions{
+    display: flex;
+    margin: 0 -0.5rem;
+}
+
+.log .actions button{
+    cursor: pointer;
+    margin: 0 0.5rem;
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+    transition: 0.4s;
+}
+
+.log .actions button:hover{
+    opacity: 0.8;
+}
+
+.log .actions button:active{
+    opacity: 0.6;
+}
+
+.log .actions .edit {
+    color: #8ec386;
+    background-image: linear-gradient(to right,#BDEA37, #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.log .actions .delete {
+    color: #8ec386;
+    background-image: linear-gradient(to right,#FF5733 , #C70039 );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/*h2, p {
     text-align: center;
 }
 
 form {
     padding: 10px;
     text-align: center;
+    display: flex;
 }
 
 tr {
@@ -37,3 +178,11 @@ tr {
 .clearfix{
     clear:both
 }
+.one{
+    width: max-content;
+}
+
+.header{
+    padding: 10px;
+}
+*/

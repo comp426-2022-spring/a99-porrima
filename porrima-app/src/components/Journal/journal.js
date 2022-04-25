@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./journal.css";
 
+
+
+
 async function getEntries(username) {
   try {
     const url = "http://localhost:3000/app/user/entries/";
@@ -130,11 +133,9 @@ export default function Journal() {
   useEffect(() => {
     entries();
   }, []);
-
+/*
   return (
     <div className="journal-wrapper">
-      <h2>Health Journal</h2>
-      <p>Only one entry is allowed per day</p>
       <div className="grid-container">
         <div className="delete-button">
           <form onSubmit={deleteEntry}>
@@ -171,4 +172,49 @@ export default function Journal() {
       </table>
     </div>
   );
+  */
+return(
+<div className="journal_content">
+
+<div className="journal_header">
+<h1>Welcome</h1>
+<form id="entries" onSubmit={addEntry}>
+  <input 
+    type="text"
+    id="new-entry"
+    placeholder="How are you doing today?"/>
+    <input
+      type="submit"
+      id="new-log-submit"
+      value="Enter Log"
+    />
+</form>
+</div>
+<div className="journal_main">
+  <section className="logs-list">
+    <h2>Logs</h2>
+    <div id="logs">
+        <div className="log">
+          <div className="content">
+            <input
+              type="text"
+              class="text"
+              value="Today's Entery"
+              readOnly
+            />
+          </div>
+          <div className="actions">
+            <button className="edit" onClick={updateEntry}>Edit</button>
+            <button className="delete" onClick={deleteEntry}>Delete</button>
+          </div>
+        </div>
+    </div>
+
+  </section>
+
+</div>
+
+</div>
+);
+
 }

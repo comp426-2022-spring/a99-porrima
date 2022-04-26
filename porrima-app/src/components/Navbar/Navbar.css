@@ -15,7 +15,8 @@
 
 
 .navbar_logo img{
-    width: 200px;
+    width: 300px;
+    height: fit-content;
 }
 .navbar_container{
     display: flex;

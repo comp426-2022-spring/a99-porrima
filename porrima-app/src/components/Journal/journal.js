@@ -88,7 +88,7 @@ const entries = async (e) => {
       const content = document.createElement("div")
       content.classList.add("content")
 
-      const date = document.createElement("h3")
+      const date = document.createElement("h4")
       date.classList.add("text")
       date.innerHTML = obj["date"]
 

@@ -4,8 +4,8 @@ import './BMI.css'
 
 function BMICal() {
 
-  const [weight, Weight] = useState(0)
-  const [height, Height] = useState(0)
+  const [weight, Weight] = useState()
+  const [height, Height] = useState()
   const [bmi, Bmi] = useState('')
   const [message, RETURN] = useState('')
 
@@ -30,19 +30,22 @@ function BMICal() {
     }
   }
  
-
+/*
   return (
     <div className="frame">
       <div className='box'>
-        <h2 className='middle'>BMI Calculator</h2>
+        <h1>BMI Calculator</h1>
         <form onSubmit={calculator}>
-          <div>
-            <label>Enter your Weight (lbs)</label>
-            <input value={weight} onChange={(e) => Weight(e.target.value)} />
+          <div className='weight'>
+            <input value={weight}
+            type="integer"
+            placeholder="Enter your Weigh (lbs)"
+            onChange={(e) => Weight(e.target.value)} />
           </div>
-          <div>
-            <label>Enter your Height (in)</label>
-            <input value={height} onChange={(event) => Height(event.target.value)} />
+          <div className='bmi_height'>
+            <input value={height} 
+              placeholder="Enter your Height (in)"
+            onChange={(event) => Height(event.target.value)} />
           </div>
           <div>
             <button type='submit'>Get Your BMI</button>
@@ -57,6 +60,34 @@ function BMICal() {
 
       </div>
     </div>
+  );
+  */
+
+  return(
+    <div className='wrapper'>
+      <div className='box'>
+      <h1>BMI Calculator</h1>
+      <div className='content'>
+        <div className='input'>
+          <label for="height">Height (in)</label>
+          <input type="number" id='height'></input>
+        </div>
+        <div className='input'>
+          <label for="weight">Weight (lbs)</label>
+          <input type="number" id='weight'></input>
+        </div>
+        <button id='calculate'>Calculate BMI</button>
+      </div>
+      <div className='result'>
+        <p>
+          Your BMI is
+        </p>
+        <div className='result'>00.00</div>
+        <p className='comment'>Comment</p>
+      </div>
+      </div>
+    </div>
+
   );
 }
 

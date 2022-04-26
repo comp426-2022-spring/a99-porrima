@@ -77,7 +77,7 @@ export default function Login({ setToken }) {
             <td>
               <div class="logo">
                 <h1>
-                  <img src={picture} alt=""></img>
+                  <img src="./IMG_6014.JPG" alt=""></img>
                   Welcome to The Health Journal
                 </h1>
               </div>

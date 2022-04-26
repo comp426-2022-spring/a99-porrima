@@ -25,11 +25,11 @@ function Account() {
     const em = data.email;
 
     const username = document.getElementById("username");
-    username.classList.add("")
+    username.classList.add("info")
     username.innerHTML = user;
     const email = document.getElementById("email");
     email.innerHTML = em;
-    email.classList.add("")
+    email.classList.add("info")
   }
 
   useEffect(() => {
@@ -38,7 +38,9 @@ function Account() {
 
   return (
     <div className="account-wrapper">
+      <h2>Username</h2>
       <div id="username" className="username"></div>
+      <h2>Email</h2>
       <div id="email" className="email"></div>
       <button onClick={deleteAccount}>Delete Account</button>
     </div>

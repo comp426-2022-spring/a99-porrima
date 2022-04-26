@@ -1,15 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+  }
+
 .grid-container{
     text-align: center;
     padding: 10px;
+    display: flex;
+    justify-content: center;
 }
 
 .grid-item {
     display: inline-block;
-    height: 100px;
+    height: 200px;
     width: 200px;
-    border: 0.5px solid black;
     text-align: center;
-    margin: 0.5px;
+    margin: 2px;
+    background-color: #6ca2be;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+    color: white;
 }
 
 .buttons {
@@ -17,3 +33,38 @@
     text-align: center;
 }
 
+.buttons button, .forms button {
+    flex: 1 1 0%;
+    color: #8ec386;
+    background-image: linear-gradient(to right,#8ec386, #028ed9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
+    transition: 0.4s;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+select, option {
+    cursor: pointer;
+}
+
+select {
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    background-color:  #8ec386 ;
+    padding: 0.5rem;
+    border-radius: 1rem;
+}
+
+input[type="text"] {
+    background-color:  #badbec;
+    padding: 1 rem;
+    border-radius: 1rem;
+    margin-right: 1rem;
+    color: white;
+    width: 500px;
+}

@@ -229,7 +229,7 @@ Keep-Alive: timeout=5
 
 ## /app/healthgoals/ (GET)
 * Returns all the daily goals for user
-* Username and date are required to be passed through body params
+* Username is required and is passed through query parameter
 ### cURL
 ```
 curl http://localhost:3000/app/healthgoals/?username=user
@@ -253,7 +253,7 @@ Keep-Alive: timeout=5
 
 ## /app/healthgoals/addgoal (POST)
 * Used for adding goal at a given day
-* Arguments needed is username, day, & goal which is passed through body parameters
+* Arguments needed are username, day, & goal which is passed through body parameters
 ### cURL
 ```
 curl -X POST -H "Content-Type: application/json" -d '{"username": "mattsg", "day": "thursday", "goal": "5 sit ups"}' http://localhost:3000/app/healthgoals/addgoal
@@ -301,7 +301,7 @@ Keep-Alive: timeout=5
 
 ## /app/healthgoals/deletegoal (DELETE)
 * Used for deleting a goal at given day
-* Arguments needed are username & day which is passed through a body parameters
+* Arguments needed are username & day which is passed through body parameters
 ### cURL
 ```
 curl -X DELETE -H "Content-Type: application/json" -d '{"username": "mattsg", "day": "thursday"}' http://localhost:3000/app/healthgoals/deletegoal

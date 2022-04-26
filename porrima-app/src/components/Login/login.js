@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./login.css";
+import "./IMG_6014.JPG";
 
 async function loginUser(credentials) {
   try {
@@ -43,7 +44,6 @@ export default function Login({ setToken }) {
       password,
     });
     if (token.token) {
-      window.location = "/home"
       setToken(token);
     }
   };
@@ -52,18 +52,18 @@ export default function Login({ setToken }) {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-    await signUpUser({
+    const userData = await signUpUser({
       email,
       username,
       password,
     });
+    console.log(userData);
 
     const token = await loginUser({
       username,
       password,
     });
     if (token.token) {
-      window.location = "/home"
       setToken(token);
     }
   };
@@ -74,7 +74,23 @@ export default function Login({ setToken }) {
         <tablebody>
           <tr>
             <td>
+              <div class="logo">
+                <h1>
+                  <img src= "./IMG_6014.JPG"></img>
+                  Welcome to The Health Journal
+                </h1>
+              </div>
+            </td>
+          </tr>
+        </tablebody>
+      </table>
+      <table>
+        <tablebody>
+          <tr>
+          <td class="box">
+            <td>
               <div className="login-wrapper">
+                <h2>Returning Users</h2>
                 <h1>Log In</h1>
                 <form onSubmit={handleSubmit}>
                   <label>
@@ -82,7 +98,6 @@ export default function Login({ setToken }) {
                     <input
                       className="login-input"
                       type="text"
-                      placeholder="Username"
                       onChange={(e) => setUserName(e.target.value)}
                     />
                   </label>
@@ -91,7 +106,6 @@ export default function Login({ setToken }) {
                     <input
                       className="login-input"
                       type="password"
-                      placeholder="Password"
                       onChange={(e) => setPassword(e.target.value)}
                     />
                   </label>
@@ -103,16 +117,18 @@ export default function Login({ setToken }) {
                 </form>
               </div>
             </td>
+            </td>
+            <td class="box">
             <td>
               <div className="signup-wrapper">
-                <h2>Sign-up for The Health Journal</h2>
+                <h1>First-Time Users</h1>
+                <h2>Sign-up for The Health Journal!</h2>
                 <form onSubmit={handleSignUp}>
                   <label>
                     <p>Email</p>
                     <input
                       className="signup-input"
                       type="text"
-                      placeholder="Email"
                       onChange={(e) => setNewEmail(e.target.value)}
                     />
                   </label>
@@ -121,7 +137,6 @@ export default function Login({ setToken }) {
                     <input
                       className="signup-input"
                       type="text"
-                      placeholder="Username"
                       onChange={(e) => setUserName(e.target.value)}
                     />
                   </label>
@@ -130,7 +145,6 @@ export default function Login({ setToken }) {
                     <input
                       className="signup-input"
                       type="password"
-                      placeholder="Password"
                       onChange={(e) => setPassword(e.target.value)}
                     />
                   </label>
@@ -141,6 +155,7 @@ export default function Login({ setToken }) {
                   </div>
                 </form>
               </div>
+            </td>
             </td>
           </tr>
         </tablebody>

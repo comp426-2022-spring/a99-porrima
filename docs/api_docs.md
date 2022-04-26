@@ -232,15 +232,23 @@ Keep-Alive: timeout=5
 * Username and date are required to be passed through body params
 ### cURL
 ```
-
+curl http://localhost:3000/app/healthgoals/?username=user
 ```
 ### Response
 ```
-
+{"monday":"100 push ups","tuesday":"1000 jumping jacks in 5 minute intervals","wednesday":null,"thursday":null,"friday":"75 burpees","saturday":"Rest","sunday":"100 jumping jacks"}
 ```
 ### Headers
 ```
-
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 180
+ETag: W/"b4-BfT5obmfNEpH8ut99j9Tuzr7OSE"
+Date: Tue, 26 Apr 2022 16:27:39 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
 ```
 
 ## /app/healthgoals/addgoal (POST)
@@ -248,15 +256,23 @@ Keep-Alive: timeout=5
 * Arguments needed is username, day, & goal which is passed through body parameters
 ### cURL
 ```
-
+curl -X POST -H "Content-Type: application/json" -d '{"username": "mattsg", "day": "thursday", "goal": "5 sit ups"}' http://localhost:3000/app/healthgoals/addgoal
 ```
 ### Response
 ```
-
+{"changes":1,"lastInsertRowid":9}
 ```
 ### Headers
 ```
-
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 33
+ETag: W/"21-JZoqwLT3XlZB1H9LlgjNs++ce3o"
+Date: Tue, 26 Apr 2022 16:45:44 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
 ```
 
 ## /app/healthgoals/updategoal (PATCH)
@@ -264,15 +280,23 @@ Keep-Alive: timeout=5
 * Username, day, and goal are required to be passed through body params
 ### cURL
 ```
-
+curl -X PATCH -H "Content-Type: application/json" -d '{"username": "mattsg", "day": "thursday", "goal": "100 sit ups"}' http://localhost:3000/app/healthgoals/updategoal
 ```
 ### Response
 ```
-
+{"changes":1,"lastInsertRowid":9}
 ```
 ### Headers
 ```
-
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Access-Control-Allow-Origin: *        
+Content-Type: application/json; charset=utf-8
+Content-Length: 33
+ETag: W/"21-JZoqwLT3XlZB1H9LlgjNs++ce3o"
+Date: Tue, 26 Apr 2022 16:46:54 GMT   
+Connection: keep-alive
+Keep-Alive: timeout=5
 ```
 
 ## /app/healthgoals/deletegoal (DELETE)
@@ -280,13 +304,21 @@ Keep-Alive: timeout=5
 * Arguments needed are username & day which is passed through a body parameters
 ### cURL
 ```
-
+curl -X DELETE -H "Content-Type: application/json" -d '{"username": "mattsg", "day": "thursday"}' http://localhost:3000/app/healthgoals/deletegoal
 ```
 ### Response
 ```
-
+{"changes":1,"lastInsertRowid":9}
 ```
 ### Headers
 ```
-
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Access-Control-Allow-Origin: *        
+Content-Type: application/json; charset=utf-8
+Content-Length: 33
+ETag: W/"21-JZoqwLT3XlZB1H9LlgjNs++ce3o"
+Date: Tue, 26 Apr 2022 16:48:53 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
 ```

@@ -44,6 +44,7 @@ export default function Login({ setToken }) {
       password,
     });
     if (token.token) {
+      window.location ="/home"
       setToken(token);
     }
   };
@@ -76,7 +77,7 @@ export default function Login({ setToken }) {
             <td>
               <div class="logo">
                 <h1>
-                  <img src= "./IMG_6014.JPG"></img>
+                  <img src= "./IMG_6014.JPG" alt=""></img>
                   Welcome to The Health Journal
                 </h1>
               </div>

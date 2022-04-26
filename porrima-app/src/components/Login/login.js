@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./login.css";
-import "./IMG_6014.JPG";
+import picture from "../../assets/health.JPG";
 
 async function loginUser(credentials) {
   try {
@@ -44,6 +44,7 @@ export default function Login({ setToken }) {
       password,
     });
     if (token.token) {
+      window.location = "/home";
       setToken(token);
     }
   };
@@ -76,7 +77,7 @@ export default function Login({ setToken }) {
             <td>
               <div class="logo">
                 <h1>
-                  <img src= "./IMG_6014.JPG"></img>
+                  <img src={picture} alt=""></img>
                   Welcome to The Health Journal
                 </h1>
               </div>
@@ -87,75 +88,75 @@ export default function Login({ setToken }) {
       <table>
         <tablebody>
           <tr>
-          <td class="box">
-            <td>
-              <div className="login-wrapper">
-                <h2>Returning Users</h2>
-                <h1>Log In</h1>
-                <form onSubmit={handleSubmit}>
-                  <label>
-                    <p>Username</p>
-                    <input
-                      className="login-input"
-                      type="text"
-                      onChange={(e) => setUserName(e.target.value)}
-                    />
-                  </label>
-                  <label>
-                    <p>Password</p>
-                    <input
-                      className="login-input"
-                      type="password"
-                      onChange={(e) => setPassword(e.target.value)}
-                    />
-                  </label>
-                  <div>
-                    <button className="login-input" type="submit">
-                      Submit
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </td>
+            <td class="box">
+              <td>
+                <div className="login-wrapper">
+                  <h2>Returning Users</h2>
+                  <h1>Log In</h1>
+                  <form onSubmit={handleSubmit}>
+                    <label>
+                      <p>Username</p>
+                      <input
+                        className="login-input"
+                        type="text"
+                        onChange={(e) => setUserName(e.target.value)}
+                      />
+                    </label>
+                    <label>
+                      <p>Password</p>
+                      <input
+                        className="login-input"
+                        type="password"
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
+                    </label>
+                    <div>
+                      <button className="login-input" type="submit">
+                        Submit
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </td>
             </td>
             <td class="box">
-            <td>
-              <div className="signup-wrapper">
-                <h1>First-Time Users</h1>
-                <h2>Sign-up for The Health Journal!</h2>
-                <form onSubmit={handleSignUp}>
-                  <label>
-                    <p>Email</p>
-                    <input
-                      className="signup-input"
-                      type="text"
-                      onChange={(e) => setNewEmail(e.target.value)}
-                    />
-                  </label>
-                  <label>
-                    <p>Username</p>
-                    <input
-                      className="signup-input"
-                      type="text"
-                      onChange={(e) => setUserName(e.target.value)}
-                    />
-                  </label>
-                  <label>
-                    <p>Password</p>
-                    <input
-                      className="signup-input"
-                      type="password"
-                      onChange={(e) => setPassword(e.target.value)}
-                    />
-                  </label>
-                  <div>
-                    <button className="signup-input" type="submit">
-                      Sign Up
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </td>
+              <td>
+                <div className="signup-wrapper">
+                  <h1>First-Time Users</h1>
+                  <h2>Sign-up for The Health Journal!</h2>
+                  <form onSubmit={handleSignUp}>
+                    <label>
+                      <p>Email</p>
+                      <input
+                        className="signup-input"
+                        type="text"
+                        onChange={(e) => setNewEmail(e.target.value)}
+                      />
+                    </label>
+                    <label>
+                      <p>Username</p>
+                      <input
+                        className="signup-input"
+                        type="text"
+                        onChange={(e) => setUserName(e.target.value)}
+                      />
+                    </label>
+                    <label>
+                      <p>Password</p>
+                      <input
+                        className="signup-input"
+                        type="password"
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
+                    </label>
+                    <div>
+                      <button className="signup-input" type="submit">
+                        Sign Up
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </td>
             </td>
           </tr>
         </tablebody>

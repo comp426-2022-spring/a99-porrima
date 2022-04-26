@@ -6,6 +6,12 @@
     font-family: 'Roboto', sans-serif;
 }
 
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 1; /* Firefox */
+    padding: 3px;
+  }
+
 .journal_content{
     display: flex;
     flex-direction: column;
@@ -34,10 +40,14 @@ input, button{
 
 #new-entry{
     background-color:  #badbec;
-    padding: 1 rem;
-    border-radius: 1rem;
+    padding: 10px;
+    border-radius: 5px;
     margin-right: 1rem;
     color: white;
+    
+}
+#new-entry .text{
+    color: yellow;
 }
 #new-log-submit{
     flex: 1 1 0%;
@@ -124,16 +134,18 @@ input, button{
     opacity: 0.6;
 }
 
-.log .actions .edit {
+.log .actions .delete {
     color: #8ec386;
     background-image: linear-gradient(to right,#BDEA37, #fff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-
-.log .actions .delete {
-    color: #8ec386;
-    background-image: linear-gradient(to right,#FF5733 , #C70039 );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+h4{
+    font-weight: 200;
+}
+.content{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
 }

@@ -37,7 +37,7 @@ h2 {
   text-align: center;
 }
 
-button {
+.d-button, .update-button {
   color: white;
   background: linear-gradient(
     90deg,

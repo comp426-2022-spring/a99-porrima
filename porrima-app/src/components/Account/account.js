@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./account.css";
 
 function Account() {
@@ -17,6 +17,41 @@ function Account() {
 
     localStorage.clear();
     window.location = "/";
+  }
+
+  const [newusername, setUsername] = useState();
+  const [email, setEmail] = useState();
+
+  function updateAccount(userData) {
+    try{
+      const url = "http://localhost:3000/app/update/user/"
+      fetch(url, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userData)
+      }).then((data) => data.json())
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  function handleSubmit() {
+    const data = JSON.parse(localStorage.getItem("token"));
+    const username = data.user;
+    const userData = {
+      username,
+      newusername,
+      email
+    }
+    updateAccount(userData)
+    const e = email || data.email;
+    const u = newusername || username;
+    localStorage.clear()
+    const token = {token: true, user: u, email: e}
+    localStorage.setItem("token", JSON.stringify(token))
+    console.log(userData)
   }
 
   function FillInfo() {
@@ -44,6 +79,24 @@ function Account() {
       <div id="email" className="email"></div>
       <div className="delete-button">
         <button onClick={deleteAccount}>Delete Account</button>
+      </div>
+      <div className="update-info">
+        <h2>Update Account Info</h2>
+        <form onSubmit={handleSubmit}>
+          <label>
+            <p>Username</p>
+            <input type="text" onChange={(e) => setUsername(e.target.value)} />
+          </label>
+          <label>
+            <p>Email</p>
+            <input type="text" onChange={(e) => setEmail(e.target.value)} />
+          </label>
+          <div className="update">
+            <button className="update-button" type="submit">
+              Update
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );

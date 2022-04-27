@@ -78,7 +78,7 @@ function Account() {
       <h2>Email</h2>
       <div id="email" className="email"></div>
       <div className="delete-button">
-        <button onClick={deleteAccount}>Delete Account</button>
+        <button className="d-button"onClick={deleteAccount}>Delete Account</button>
       </div>
       <div className="update-info">
         <h2>Update Account Info</h2>

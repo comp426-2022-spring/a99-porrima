@@ -37,7 +37,7 @@ form {
   text-align: center;
 }
 
-.update button {
+.d-button, .update-button {
   color: white;
   background: linear-gradient(
     90deg,

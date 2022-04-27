@@ -12,7 +12,108 @@
   background-image: url('../../assets/bg.png');
 }
 
+.container{
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+  border: none;
+}
+.bmi_box{
+  min-width: 400px;
+  border-radius: 38px;
+  background-color: #fafafa;
+  text-align: center;
+  position: relative;
+  border: none;
+}
 
+.bmi_box::before{
+  content: '';
+  position: absolute;
+  height: 110%;
+  width: 110%;
+  left: -5%;
+  top: -5%;
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0px 0px 166px -31px rgba(0, 0, 0, 0.3);
+  border-radius: 38px;
+  z-index: -1;
+}
+
+.bmi_box h1{
+  padding: 30px 0px;
+}
+
+.bmi_content{
+  padding: 0px, 40px;
+
+}
+
+.bmi_input{
+  padding: 20px 0;
+  margin-bottom: 10px;
+}
+.bmi_input label{
+  display: block;
+}
+
+.bmi_input input{
+  border-width: 10px;
+  outline: auto;
+  background: linear-gradient(90deg, rgba(142,195,134,1) 0%, rgba(2,142,217,1) 100%);
+  font-size: 18px;
+  margin-top: 10px;
+  font-weight: 300;
+  padding: 3px;
+  color: white;
+  text-align: center;
+}
+
+button#calculate{
+  color: white;
+  background: linear-gradient(90deg, rgba(131,211,255,1) 27%, rgba(0,165,255,1) 100%);
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin: 5px;
+}
+
+button#calculate:hover{
+  background: linear-gradient(90deg, rgba(108,166,199,1) 27%, rgba(4,119,181,1) 100%);   border-radius: 10px;
+
+}
+
+.bmi_result{
+  padding: 10px;
+}
+
+.bmi_result{
+  font-size: 14px;
+  font-weight: 300;
+  color: #117bb2;
+
+}
+
+.bmi_result #bmi_result{
+  font-size: 16px;
+  margin: 4px;
+  font-weight: 900;
+
+}
+
+#comment{
+  font-weight: 700;
+  color: #117bb2;
+}
+
+#good_comment{
+  font-weight: 700;
+  color: #6cc77a;
+}
+#bad_comment{
+  font-weight: 700;
+  color: #e04782;
+}
 /*
  {
   box-sizing: border-box;

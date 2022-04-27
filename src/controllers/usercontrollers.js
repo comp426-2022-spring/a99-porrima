@@ -60,12 +60,14 @@ const userSignin = (req, res) => {
 const updateUser = (req, res) => {
   try {
     let salt = null;
+    let pass = null;
     if (!(req.body.password === undefined)) {
       salt = md5(Math.random());
+      pass = md5(req.body.password + String(salt))
     }
     let user_info = {
       user: req.body.newusername,
-      pass: md5(req.body.password + String(salt)),
+      pass: pass,
       email: req.body.email,
       salt: salt,
     };

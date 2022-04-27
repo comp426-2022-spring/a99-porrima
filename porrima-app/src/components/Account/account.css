@@ -3,6 +3,14 @@
     margin: 0 auto;
 }
 
+.update-info {
+  padding: 40px;
+}
+
+form {
+  align-items: center;
+}
+
 .info,
 h2 {
   text-align: center;
@@ -36,7 +44,7 @@ button {
     rgba(131, 211, 255, 1) 27%,
     rgba(0, 165, 255, 1) 100%
   );
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 5px 10px;
   height:40px; 
   width:100px; 
@@ -44,4 +52,8 @@ button {
   position:relative;
   top:50%; 
   left:50%;
+}
+
+.update, .delete-button {
+  padding: 15px;
 }

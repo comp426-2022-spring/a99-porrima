@@ -8,15 +8,53 @@ The team for this project is comprised of students at UNC-CH.
 
 ## Documentation
 
-Documentation for API endpoints, UI usage, dependencies and planning can be found in the [docs](https://github.com/mattsg6/a99-porrima/tree/main/docs) folder.
+Documentation for API endpoints, UI usage, and planning can be found in the [docs](https://github.com/mattsg6/a99-porrima/tree/main/docs) folder.
+
+## Dependencies
+
+* better-sqlite3
+    * Databases are built using better-sqlite3
+* react
+    * Used for frontend
+* react-icons
+    * Used for frontend
+* cors
+    * Calling APIs
+* express
+    * Generating server
+* md5
+    * Hashing passwords
+* chai
+    * Dev - for testing
+* fs
+    * Dev - writing to access log
+* minimist
+    * Dev - selecting port to run on
+* mocha
+    * Dev - for testing
+* morgan
+    * Dev - for logging user actions
+* nodemon
+    * Dev - for runnin server
+* request
+    * Dev - for testing
+* supertest
+    * Dev - for testing
 
 ## Deliverables
 
 A GitHub repository containing your code and documentation and a prototype release package. Your project should take the form of a Node package, with all of the attendant items associated with that. The following three script commands should work in your package:
 
+### Install dependencies in package
 `npm install` - Install dependencies for your package.<br />
+
+### Run tests on server
 `npm test` - Start app, check that everything can run, and then stop app.<br />
-`npm start` - Command to bring up all parts of the app/system’s server scripts.<br />
+
+### Start app/system
+`npm start` - In the a99-porrima directory. Run on port 3000. <br />
+`cd porrima-app` - Move into the react app. <br />
+`npm start` - Start the react app. Will be prompted to run on different port. Select 'y'. <br />
 Your team is responsible for incorporating the following specifications and deliverables into your final project:
 
 1. Back-end specifications

@@ -23,7 +23,7 @@ Here, users can enter in information pertaining to their health. A date stamp is
 Here, users can add, edit, or delete goals for every day of the week. The page automatically renders based on which days have goals and which days don't.
 
 ### BMI Calculator
-Here, users can enter their weight and height to get their Body mass index (BMI) and see if they are overweight, normal weight or underweight.
+Here, users can enter their weights and heights to get their Body mass index (BMI) and see if they are overweight, normalweight or underweight.
 
 ### Account
 

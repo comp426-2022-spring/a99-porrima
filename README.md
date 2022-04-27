@@ -8,7 +8,7 @@ The team for this project is comprised of students at UNC-CH.
 
 ## Documentation
 
-Can be found in the [docs](https://github.com/mattsg6/a99-porrima/tree/main/docs) folder.
+Documentation for API endpoints, UI usage, dependencies and planning can be found in the [docs](https://github.com/mattsg6/a99-porrima/tree/main/docs) folder.
 
 ## Deliverables
 

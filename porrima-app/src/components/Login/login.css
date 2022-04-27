@@ -5,7 +5,7 @@ table {
     margin-right: auto;
     background: -webkit-linear-gradient(left, rgb(173, 231, 254), rgb(18, 77, 188));
     background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: rgb(13, 30, 84);
 }
 
 form {

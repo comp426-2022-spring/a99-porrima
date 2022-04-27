@@ -6,7 +6,7 @@ function Account() {
     const data = JSON.parse(localStorage.getItem("token"));
     const username = data.user;
     const url = "http://localhost:3000/app/delete/user/";
-    const userData = { username: username }
+    const userData = { username: username };
     fetch(url, {
       method: "DELETE",
       headers: {
@@ -25,11 +25,11 @@ function Account() {
     const em = data.email;
 
     const username = document.getElementById("username");
-    username.classList.add("info")
+    username.classList.add("info");
     username.innerHTML = user;
     const email = document.getElementById("email");
     email.innerHTML = em;
-    email.classList.add("info")
+    email.classList.add("info");
   }
 
   useEffect(() => {
@@ -42,7 +42,9 @@ function Account() {
       <div id="username" className="username"></div>
       <h2>Email</h2>
       <div id="email" className="email"></div>
-      <button onClick={deleteAccount}>Delete Account</button>
+      <div className="delete-button">
+        <button onClick={deleteAccount}>Delete Account</button>
+      </div>
     </div>
   );
 }

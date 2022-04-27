@@ -60,7 +60,7 @@ function Account() {
     const em = data.email;
 
     const username = document.getElementById("username");
-    username.classList.add("info");
+    username.classList.add("account_info");
     username.innerHTML = user;
     const email = document.getElementById("email");
     email.innerHTML = em;

@@ -1,6 +1,7 @@
 .account-wrapper {
     width: 50%;
     margin: 0 auto;
+    text-align: center;
 }
 
 .update-info {
@@ -11,8 +12,7 @@ form {
   align-items: center;
 }
 
-.info,
-h2 {
+.account_info {
   text-align: center;
   color: white;
   background: linear-gradient(
@@ -37,7 +37,7 @@ h2 {
   text-align: center;
 }
 
-button {
+.update button {
   color: white;
   background: linear-gradient(
     90deg,

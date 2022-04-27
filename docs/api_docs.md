@@ -66,7 +66,7 @@ curl --data "username=username&password=password" http://localhost:3000/app/user
 ```
 ### Response
 ```
-{ token: true, user: username }
+{ token: true, user: username, email: email@email.com }
 ```
 ### Headers
 ```

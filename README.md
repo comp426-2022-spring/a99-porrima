@@ -8,7 +8,7 @@ The team for this project is comprised of students at UNC-CH.
 
 ## Documentation
 
-Documentation for API endpoints, UI usage, and planning can be found in the [docs](https://github.com/mattsg6/a99-porrima/tree/main/docs) folder.
+Documentation for API endpoints, UI usage, and planning can be found in the [docs](https://github.com/comp426-2022-spring/a99-porrima/tree/main/docs) folder.
 
 ## Dependencies
 

@@ -46,7 +46,7 @@ Documentation for API endpoints, UI usage, and planning can be found in the [doc
 A GitHub repository containing your code and documentation and a prototype release package. Your project should take the form of a Node package, with all of the attendant items associated with that. The following three script commands should work in your package:
 
 ### Install dependencies in package
-`npm install` - Install dependencies for your package.<br />
+`npm install` - Install [dependencies](https://github.com/comp426-2022-spring/a99-porrima#dependencies) for your package.<br />
 
 ### Run tests on server
 `npm test` - Start app, check that everything can run, and then stop app.<br />

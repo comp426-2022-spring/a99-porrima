@@ -69,78 +69,136 @@ export default function Login({ setToken }) {
     }
   };
 
-  /*const sign_in_btn = document.querySelector('#sign-in-btn');
-  const sign_up_btn = document.querySelector('#sign-up-btn');
-  const container = document.querySelector('.container');
-
-  sign_up_btn.addEventListener('click', ()=> {
-    container.classList.add('sign-up-mode');
-  })
-
-  sign_in_btn.addEventListener('click', ()=> {
-    container.classList.remove('sign-up-mode');
-  })*/
-
-  return (
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8"></meta>
-      <meta http-equiv="X-UA-Compatible" conten="IE=edge"></meta>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-      <title>Login and Signup</title>
-    </head>
-    <body>
-      <div class="login_container">
-        <div class="forms-container">
-          <div class="login-signup">
-            <div className="login_form">
-            <form action="#" class="login-form" onSubmit={handleSubmit}>
-              <h2 class="title">Log In</h2>
-              <div class="input-field">
-                <input type="text" placeholder="Username" onChange={(e) => setUserName(e.target.value)}/>
-              </div>
-              <div class="input-field">
-                <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
-              </div>
-              <input type="submit" class="btn solid" value="Login" />
-            </form>
-            </div>
-          </div>
-          <div class="login-signup">
-            <form action="#" class="sign-up-form" onSubmit={handleSignUp}>
-              <h2 class="title">Sign Up</h2>
-              <div class="input-field">
-                <input type="text" placeholder="Username" onChange={(e) => setUserName(e.target.value)}/>
-              </div>
-              <div class="input-field">
-                <input type="email" placeholder="Email" onChange={(e) => setNewEmail(e.target.value)}/>
-              </div>
-              <div class="input-field">
-
-                <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
-              </div>
-              <input type="submit" class="btn solid" value="Login" />
-            </form>
-          </div>
-        </div>
-        <div class="panels-container">
-          <div class="panel left-panel">
-            <div class="content">
-              <h3>New Here?</h3>
-              <button class="btn transparent" id="sign-up-button">Sign Up</button>
-            </div>
-          </div>
-          <div class="panel right-panel">
-            <div class="content">
-              <h3>One of us</h3>
-              <button class="btn transparent" id="sign-in-button">Log In</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </body>
-    </html>
+/*
+return (
+    <div className="login-page-wrapper">
+      <table>
+        <tablebody>
+          <tr>
+            <td class="box">
+              <td>
+                <div className="login-wrapper">
+                  <h2>Returning Users</h2>
+                  <h1>Log In</h1>
+                  <form onSubmit={handleSubmit}>
+                    <label>
+                      <p>Username</p>
+                      <input
+                        className="login-input"
+                        type="text"
+                        onChange={(e) => setUserName(e.target.value)}
+                      />
+                    </label>
+                    <label>
+                      <p>Password</p>
+                      <input
+                        className="login-input"
+                        type="password"
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
+                    </label>
+                    <div>
+                      <button className="login-input" type="submit">
+                        Submit
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </td>
+            </td>
+            <td class="box">
+              <td>
+                <div className="signup-wrapper">
+                  <h1>First-Time Users</h1>
+                  <h2>Sign-up for The Health Journal!</h2>
+                  <form onSubmit={handleSignUp}>
+                    <label>
+                      <p>Email</p>
+                      <input
+                        className="signup-input"
+                        type="text"
+                        onChange={(e) => setNewEmail(e.target.value)}
+                      />
+                    </label>
+                    <label>
+                      <p>Username</p>
+                      <input
+                        className="signup-input"
+                        type="text"
+                        onChange={(e) => setUserName(e.target.value)}
+                      />
+                    </label>
+                    <label>
+                      <p>Password</p>
+                      <input
+                        className="signup-input"
+                        type="password"
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
+                    </label>
+                    <div>
+                      <button className="signup-input" type="submit">
+                        Sign Up
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </td>
+            </td>
+          </tr>
+        </tablebody>
+      </table>
+    </div>
   );
+*/
+
+
+return(
+<div className="loginwarpper">
+  <div className="login_container">
+  <div className="forms_container">
+    <div className="signin_signup">
+      <div className="signin_form">
+                  <h2 className="title">Log In</h2>
+                  <form onSubmit={handleSubmit}>
+                    <label className="input_field">
+                      <input
+                      placeholder="Username"
+                        className="login-input"
+                        type="text"
+                        onChange={(e) => setUserName(e.target.value)}
+                      />
+                    </label>
+                    <label className="input_field">
+                      <input
+                      placeholder="Password"
+                        className="login-input"
+                        type="password"
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
+                    </label>
+                    
+                    <div>
+                      <button className="login-input" type="submit">
+                        Submit
+                      </button>
+                    </div>
+                  </form>
+
+             
+      </div>
+    </div>
+  </div>
+  <div className="panels_container"></div>
+
+  </div>
+
+
+</div>
+
+);
+
+
 }
 
 Login.propTypes = {

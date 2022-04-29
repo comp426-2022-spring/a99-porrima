@@ -50,6 +50,13 @@
 
 }
 
+.bmi_content button{
+  appearance: none ;
+  border: none;
+  outline: none;
+  background: none;
+}
+
 .bmi_input{
   padding: 20px 0;
   margin-bottom: 10px;

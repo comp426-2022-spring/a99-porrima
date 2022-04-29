@@ -6,7 +6,7 @@
     font-family: 'Roboto', sans-serif;
 }
 
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+.journal_content ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: white;
     opacity: 1; /* Firefox */
     padding: 3px;
@@ -29,7 +29,13 @@
 }
 
 
-input, button{
+input {
+    appearance: none ;
+    border: none;
+    outline: none;
+    background: none;
+}
+.journal_content button{
     appearance: none ;
     border: none;
     outline: none;

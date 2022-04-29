@@ -33,6 +33,14 @@
     text-align: center;
 }
 
+.goals-wrapper button{
+    appearance: none ;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+
 .buttons button, .forms button {
     flex: 1 1 0%;
     color: #8ec386;
@@ -60,7 +68,7 @@ select {
     border-radius: 1rem;
 }
 
-input[type="text"] {
+.goals-wrapper input[type="text"] {
     background-color:  #badbec;
     padding: 1 rem;
     border-radius: 1rem;

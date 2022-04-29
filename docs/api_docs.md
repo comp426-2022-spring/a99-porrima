@@ -33,6 +33,7 @@ Keep-Alive: timeout=5
 
 
 ## /app/user/exists (GET)
+* _Not implemented in the app_
 * Used for debugging
 * Returns all values in the user db
 ### cURL
@@ -65,7 +66,7 @@ curl --data "username=username&password=password" http://localhost:3000/app/user
 ```
 ### Response
 ```
-{ token: true, user: username }
+{ token: true, user: username, email: email@email.com }
 ```
 ### Headers
 ```
@@ -180,6 +181,7 @@ Keep-Alive: timeout=5
 ```
 
 ## /app/all/entries (GET)
+* _Not implemented in the app_
 * Used for debugging
 * Returns entire journal db
 ### cURL
@@ -204,6 +206,7 @@ Keep-Alive: timeout=5
 ```
 
 ## /app/update/entry/ (PATCH)
+* _Not implemented in the app_
 * Used to update a journal entry for a specific date
 * The updated entry is passed through body parameters
 ### cURL

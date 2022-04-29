@@ -3,7 +3,7 @@
 Using better-sqlite3
 Two datases
 1. Access Logs
-    Standard logging information is held here. API endpoitns defined for debugging. Middleware in place to log to database.
+    * Standard logging information is held here. API endpoints defined for debugging. Middleware in place to log to database.
 2. User Info
     * Table One: user
         * Four pieces of information: Username, Email, Password, Salt

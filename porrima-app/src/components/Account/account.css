@@ -1,4 +1,59 @@
-.info, h2 {
-    text-align: center;
-    padding: 10px;
+.account-wrapper {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.update-info {
+  padding: 40px;
+}
+
+form {
+  align-items: center;
+}
+
+.info,
+h2 {
+  text-align: center;
+  color: white;
+  background: linear-gradient(
+    90deg,
+    rgba(131, 211, 255, 1) 27%,
+    rgba(0, 165, 255, 1) 100%
+  );
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin: 5px;
+}
+
+.username,
+.email {
+  border-width: 10px;
+  outline: auto;
+  font-size: 18px;
+  margin-top: 10px;
+  font-weight: 300;
+  padding: 3px;
+  color: white;
+  text-align: center;
+}
+
+.d-button, .update-button {
+  color: white;
+  background: linear-gradient(
+    90deg,
+    rgba(131, 211, 255, 1) 27%,
+    rgba(0, 165, 255, 1) 100%
+  );
+  border-radius: 5px;
+  padding: 5px 10px;
+  height:40px; 
+  width:100px; 
+  margin: -20px -50px; 
+  position:relative;
+  top:50%; 
+  left:50%;
+}
+
+.update, .delete-button {
+  padding: 15px;
 }

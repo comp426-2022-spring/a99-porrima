@@ -21,11 +21,11 @@ function BMICal() {
       Bmi(bmi.toFixed(1))
 
       if (bmi < 24.9) {
-        RETURN('You are underweight!')
+        RETURN('underweight!')
       } else if (bmi >= 24.9 && bmi < 30) {
-        RETURN('You are normal weight. Keep it up!')
+        RETURN('normal weight.')
       } else {
-        RETURN('You are overweight. Stay active!')
+        RETURN('overweight')
       }
     }
   }
@@ -65,25 +65,39 @@ function BMICal() {
 
   return(
     <div className='wrapper'>
-      <div className='box'>
+      <div className='container'>
+      <div className='bmi_box'>
       <h1>BMI Calculator</h1>
-      <div className='content'>
-        <div className='input'>
+      <form onSubmit={calculator}>
+      <div className='bmi_content'>
+        <div className='bmi_input'>
           <label for="height">Height (in)</label>
-          <input type="number" id='height'></input>
+          <input 
+          value={height}
+          type="number" 
+          id='height'
+          onChange={(event) => Height(event.target.value)}
+          ></input>
         </div>
-        <div className='input'>
+        <div className='bmi_input'>
           <label for="weight">Weight (lbs)</label>
-          <input type="number" id='weight'></input>
+          <input 
+          value={weight}
+          type="number" 
+          id='weight'
+          onChange={(e) => Weight(e.target.value)}
+          ></input>
         </div>
-        <button id='calculate'>Calculate BMI</button>
+        <button type='submit' id='calculate'>Calculate BMI</button> 
       </div>
-      <div className='result'>
+      </form>
+      <div className='bmi_result'>
         <p>
           Your BMI is
         </p>
-        <div className='result'>00.00</div>
-        <p className='comment'>Comment</p>
+        <div id='bmi_result'>{bmi}</div>
+        <p className='comment'>Comment: You are <span id="comment">{message}</span></p>
+      </div>
       </div>
       </div>
     </div>

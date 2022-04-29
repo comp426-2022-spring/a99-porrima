@@ -58,13 +58,13 @@ export default function Login({ setToken }) {
       username,
       password,
     });
-    console.log(userData);
 
     const token = await loginUser({
       username,
       password,
     });
     if (token.token) {
+      window.location = "/home"
       setToken(token);
     }
   };

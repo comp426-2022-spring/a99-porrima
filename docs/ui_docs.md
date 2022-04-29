@@ -16,7 +16,7 @@ Welcome message with basic instructions on how to begin using the app. Fairly in
 
 ### The Health Journal
 
-Here, users can enter in information pertaining to their health. A date stamp is added to the entry for that day. Entries can be modified.
+Here, users can enter in information pertaining to their health. A date stamp is added to the entry for that day. Entries can be deleted. Implementation for updating an entry has not been completed.
 
 ### Weekly Goals
 

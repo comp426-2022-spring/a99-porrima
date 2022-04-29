@@ -4,7 +4,7 @@
 
 [Here](https://github.com/orgs/comp426-2022-spring/teams/porrima) is the location for much of our planning.
 
-[Here](https://github.com/orgs/comp426-2022-spring/projects/4) is out project page where we developed and decided on features. This is where tasks for each member were assigned as well. Not all features were implemented.
+[Here](https://github.com/orgs/comp426-2022-spring/projects/4) is our project page where we developed and decided on features. This is where tasks for each member were assigned as well. Not all features were implemented.
 
 
 Here is our initial wireframe for the website!

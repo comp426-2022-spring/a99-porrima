@@ -60,7 +60,6 @@
 
 .bmi_input input{
   border-width: 10px;
-  outline: auto;
   background: linear-gradient(90deg, rgba(142,195,134,1) 0%, rgba(2,142,217,1) 100%);
   font-size: 18px;
   margin-top: 10px;

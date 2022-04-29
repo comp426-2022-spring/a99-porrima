@@ -90,9 +90,10 @@ export default function Login({ setToken }) {
       <title>Login and Signup</title>
     </head>
     <body>
-      <div class="container">
+      <div class="login_container">
         <div class="forms-container">
           <div class="login-signup">
+            <div className="login_form">
             <form action="#" class="login-form" onSubmit={handleSubmit}>
               <h2 class="title">Log In</h2>
               <div class="input-field">
@@ -103,6 +104,7 @@ export default function Login({ setToken }) {
               </div>
               <input type="submit" class="btn solid" value="Login" />
             </form>
+            </div>
           </div>
           <div class="login-signup">
             <form action="#" class="sign-up-form" onSubmit={handleSignUp}>

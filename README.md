@@ -35,7 +35,7 @@ Documentation for API endpoints, UI usage, and planning can be found in the [doc
 * morgan
     * Dev - for logging user actions
 * nodemon
-    * Dev - for runnin server
+    * Dev - for running server
 * request
     * Dev - for testing
 * supertest

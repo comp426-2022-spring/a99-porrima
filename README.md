@@ -2,6 +2,10 @@
 
 An open source healthcare management app, aimed to organize and assist in the process of interacting with the healthcare system.
 
+## Demo Video
+
+To find out more about the website and it's functionality, watch this [video](https://drive.google.com/file/d/1-y9WJAebOdZtfaxghzpMVZAWbZwOj35I/view?usp=sharing).
+
 ## Developers 
 
 The team for this project is comprised of students at UNC-CH.

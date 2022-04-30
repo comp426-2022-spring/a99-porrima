@@ -2,9 +2,13 @@
 
 An open source healthcare management app, aimed to organize and assist in the process of interacting with the healthcare system.
 
+Note: suggested browser is Chrome. Ran into difficulties on Firefox.
+
 ## Demo Video
 
 To find out more about the website and it's functionality, watch this [video](https://drive.google.com/file/d/1-y9WJAebOdZtfaxghzpMVZAWbZwOj35I/view?usp=sharing).
+
+Note: the UI has been updated since the recording of this video.
 
 ## Developers 
 

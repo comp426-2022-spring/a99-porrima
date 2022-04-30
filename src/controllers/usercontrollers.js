@@ -1,5 +1,4 @@
 const user_db = require("../database/database_user");
-const health_db = require("../database/database_health_goals")
 
 const md5 = require("md5");
 
@@ -46,12 +45,16 @@ const userSignin = (req, res) => {
     const stmt = user_db
       .prepare("SELECT * FROM user WHERE username = ?")
       .get(user_data.user);
-    if (stmt != undefined && stmt.password == String(md5(user_data.pass + stmt.salt))) {
+    if (
+      stmt != undefined &&
+      stmt.password == String(md5(user_data.pass + stmt.salt))
+    ) {
       sign_in = true;
-      res.status(200).json({ token: sign_in, user: user_data.user, email: stmt.email });
-    }
-    else{
-      res.status(401).json({ token: sign_in })
+      res
+        .status(200)
+        .json({ token: sign_in, user: user_data.user, email: stmt.email });
+    } else {
+      res.status(401).json({ token: sign_in });
     }
   } catch (e) {
     console.error(e);
@@ -64,7 +67,7 @@ const updateUser = (req, res) => {
     let pass = null;
     if (!(req.body.password === undefined)) {
       salt = md5(Math.random());
-      pass = md5(req.body.password + String(salt))
+      pass = md5(req.body.password + String(salt));
     }
     let user_info = {
       user: req.body.newusername,
@@ -84,13 +87,8 @@ const updateUser = (req, res) => {
       req.body.username
     );
 
-    const stm = user_db.prepare(`UPDATE journal SET username = COALESCE(?,username) WHERE username = ?`)
-    const i = stm.run(user_info.user, req.body.username)
-    console.log(i)
-
-    const s = health_db.prepare(`UPDATE user_health_goals SET username = COALESCE(?,username) WHERE username = ?`)
-    const health = s.run(user_info.user, req.body.username)
-    console.log(i)
+    const s = user_db.prepare(`UPDATE journal SET username = COALESCE(?,username) WHERE username = ?`)
+    const i = s.run(user_info.user, req.body.username)
 
     res.status(200).json(info);
   } catch (e) {

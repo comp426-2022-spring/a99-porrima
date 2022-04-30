@@ -7,7 +7,7 @@ function home() {
     <div className="header_padding">
       <div className="header_content">
          <h1 className='gradient-text'>Welcome To Your Health Journal Website!</h1>
-         <p>Start with loging in your health entry for today!</p>
+         <p>Start with logging in your health entry for today!</p>
       </div>
       <div className="header_img">
         <img src={vectors} alt="shapes"/>

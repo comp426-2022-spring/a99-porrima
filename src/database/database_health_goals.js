@@ -25,6 +25,7 @@ if(row === undefined) {
             sunday TEXT,
             FOREIGN KEY (username)
                 REFERENCES user (username)
+                ON UPDATE CASCADE
             );
         `;
     db.exec(sqlInit)

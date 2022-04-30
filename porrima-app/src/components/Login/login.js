@@ -64,12 +64,20 @@ export default function Login({ setToken }) {
       password,
     });
     if (token.token) {
-      window.location = "/home"
+      window.location = "/home";
       setToken(token);
     }
   };
 
-/*
+  function changeDiv() {
+    const login = document.getElementById("login-container");
+    login.classList.add("hidden");
+
+    const signup = document.getElementById("signup-container");
+    signup.classList.add("signup-container");
+  }
+
+  /*
 return (
     <div className="login-page-wrapper">
       <table>
@@ -152,53 +160,82 @@ return (
   );
 */
 
+  return (
+    <div className="loginwarpper">
+      <div id="login-container" className="login_container">
+        <div className="forms_container">
+          <div className="signin_signup">
+            <div className="signin_form">
+              <h2 className="title">Log In</h2>
+              <form onSubmit={handleSubmit}>
+                <label className="input_field">
+                  <input
+                    placeholder="Username"
+                    className="login-input"
+                    type="text"
+                    onChange={(e) => setUserName(e.target.value)}
+                  />
+                </label>
+                <label className="input_field">
+                  <input
+                    placeholder="Password"
+                    className="login-input"
+                    type="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </label>
 
-return(
-<div className="loginwarpper">
-  <div className="login_container">
-  <div className="forms_container">
-    <div className="signin_signup">
-      <div className="signin_form">
-                  <h2 className="title">Log In</h2>
-                  <form onSubmit={handleSubmit}>
-                    <label className="input_field">
-                      <input
-                      placeholder="Username"
-                        className="login-input"
-                        type="text"
-                        onChange={(e) => setUserName(e.target.value)}
-                      />
-                    </label>
-                    <label className="input_field">
-                      <input
-                      placeholder="Password"
-                        className="login-input"
-                        type="password"
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
-                    </label>
-                    
-                    <div>
-                      <button className="login-input" type="submit">
-                        Submit
-                      </button>
-                    </div>
-                  </form>
-
-             
+                <div>
+                  <button className="login-input" type="submit">
+                    Submit
+                  </button>
+                  <div className="new-button">
+                    <p className="new-member">New member? </p>
+                    <button className="s-button" onClick={changeDiv}>Sign up</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="signup-container" className="hidden">
+        <div className="forms_container">
+          <div className="signin_signup">
+            <div className="signin_form">
+              <h2 className="title">Sign Up</h2>
+              <form onSubmit={handleSignUp}>
+                <label className="input_field">
+                  <input
+                    type="text"
+                    placeholder="Email"
+                    onChange={(e) => setNewEmail(e.target.value)}
+                  />
+                </label>
+                <label className="input_field">
+                  <input
+                    type="text"
+                    placeholder="Username"
+                    onChange={(e) => setUserName(e.target.value)}
+                  />
+                </label>
+                <label className="input_field">
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </label>
+                <div>
+                  <button type="submit">Sign Up</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div className="panels_container"></div>
-
-  </div>
-
-
-</div>
-
-);
-
-
+  );
 }
 
 Login.propTypes = {

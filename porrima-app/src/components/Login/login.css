@@ -2,6 +2,23 @@
     font-family: 'Roboto', sans-serif;
 }
 
+.hidden, .signup-submit {
+    display: none;
+}
+
+.new_button {
+    padding: 10px;
+    display: inline;
+}
+
+.signup-container {
+    display: block;
+}
+
+.s-button {
+    height: auto;
+}
+
 .login_container{
     position: relative ;
     width: 100%;
@@ -70,10 +87,4 @@ width: max-content;
 button{
     width: 150px;
     height: 49px;
-    bakcground-color: yellow;
-}
-
-label{
-    background: yellow;
-    color: yellow;
 }

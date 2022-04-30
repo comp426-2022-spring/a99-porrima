@@ -60,7 +60,7 @@ function Account() {
     const em = data.email;
 
     const username = document.getElementById("username");
-    username.classList.add("account_info");
+    username.classList.add("info");
     username.innerHTML = user;
     const email = document.getElementById("email");
     email.innerHTML = em;
@@ -82,14 +82,13 @@ function Account() {
       </div>
       <div className="update-info">
         <h2>Update Account Info</h2>
-        <form onSubmit={handleSubmit}>
+        <form className="update-form" onSubmit={handleSubmit}>
           <label>
-            <p>Username</p>
-            <input type="text" onChange={(e) => setUsername(e.target.value)} />
+            <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} />
           </label>
+          <br></br>
           <label>
-            <p>Email</p>
-            <input type="text" onChange={(e) => setEmail(e.target.value)} />
+            <input type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
           </label>
           <div className="update">
             <button className="update-button" type="submit">

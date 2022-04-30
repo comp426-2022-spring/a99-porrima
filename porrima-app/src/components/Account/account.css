@@ -8,13 +8,31 @@
   padding: 40px;
 }
 
-form {
+.update-form {
+  align-items: center;
+}
+
+.info {
+  color: rgb(41, 64, 109);
   align-items: center;
 }
 
 .account_info {
   text-align: center;
-  color: white;
+  color: rgb(23, 44, 86);
+  background: linear-gradient(
+    90deg,
+    rgba(131, 211, 255, 1) 27%,
+    rgba(0, 165, 255, 1) 100%
+  );
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin: 5px;
+}
+
+.account-wrapper h2{
+  text-align: center;
+  color: rgb(23, 44, 86);
   background: linear-gradient(
     90deg,
     rgba(131, 211, 255, 1) 27%,
@@ -33,7 +51,7 @@ form {
   margin-top: 10px;
   font-weight: 300;
   padding: 3px;
-  color: white;
+  color: rgb(13, 30, 40);
   text-align: center;
 }
 
@@ -44,16 +62,9 @@ form {
     rgba(131, 211, 255, 1) 27%,
     rgba(0, 165, 255, 1) 100%
   );
-  border-radius: 5px;
-  padding: 5px 10px;
-  height:40px; 
-  width:100px; 
-  margin: -20px -50px; 
-  position:relative;
-  top:50%; 
-  left:50%;
 }
 
 .update, .delete-button {
-  padding: 15px;
+  padding: 10px;
+  float: center;
 }

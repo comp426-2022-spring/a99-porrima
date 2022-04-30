@@ -72,3 +72,8 @@ button{
     height: 49px;
     bakcground-color: yellow;
 }
+
+label{
+    background: yellow;
+    color: yellow;
+}

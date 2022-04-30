@@ -2,6 +2,23 @@
     font-family: 'Roboto', sans-serif;
 }
 
+.hidden, .signup-submit {
+    display: none;
+}
+
+.new_button {
+    padding: 10px;
+    display: inline;
+}
+
+.signup-container {
+    display: block;
+}
+
+.s-button {
+    height: auto;
+}
+
 .login_container{
     position: relative ;
     width: 100%;

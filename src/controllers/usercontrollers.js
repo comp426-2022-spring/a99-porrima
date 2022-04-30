@@ -1,4 +1,5 @@
 const user_db = require("../database/database_user");
+const health_db = require("../database/database_health_goals")
 
 const md5 = require("md5");
 
@@ -82,6 +83,15 @@ const updateUser = (req, res) => {
       user_info.salt,
       req.body.username
     );
+
+    const stm = user_db.prepare(`UPDATE journal SET username = COALESCE(?,username) WHERE username = ?`)
+    const i = stm.run(user_info.user, req.body.username)
+    console.log(i)
+
+    const s = health_db.prepare(`UPDATE user_health_goals SET username = COALESCE(?,username) WHERE username = ?`)
+    const health = s.run(user_info.user, req.body.username)
+    console.log(i)
+
     res.status(200).json(info);
   } catch (e) {
     console.error(e);

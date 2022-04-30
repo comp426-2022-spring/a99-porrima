@@ -53,7 +53,7 @@ A GitHub repository containing your code and documentation and a prototype relea
 `npm install` - Install [dependencies](https://github.com/comp426-2022-spring/a99-porrima#dependencies) for your package.<br />
 
 ### Run tests on server
-`npm test` - Start app, check that everything can run, and then stop app.<br />
+`npm test` - Start app, check that everything can run, and then stop app. IMPORTANT: there must be username 'test1' in the user database to properly run tests. <br />
 
 ### Start app/system
 `npm start` - In the a99-porrima directory. Run on port 3000. <br />

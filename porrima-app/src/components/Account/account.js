@@ -82,7 +82,7 @@ function Account() {
       </div>
       <div className="update-info">
         <h2>Update Account Info</h2>
-        <form onSubmit={handleSubmit}>
+        <form className="update-form" onSubmit={handleSubmit}>
           <label>
             <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} />
           </label>
